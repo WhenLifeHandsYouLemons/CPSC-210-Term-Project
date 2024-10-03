@@ -1,7 +1,11 @@
 package model;
 
 public class Book {
-    public Book() {
 
+    // REQUIRES: 
+    // MODIFIES: 
+    // EFFECTS: 
+    public Book(String name, int pageCount, int wordCount) {
+        // stub
     }
 }
