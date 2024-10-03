@@ -9,5 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestBook {
-    
+    private Book testBook1;
+    private Book testBook2;
+    private Book testBook3;
+
+    @BeforeEach
+    void runBefore() {
+        testBook1 = new Book("Book 1", 100, 60);
+        testBook2 = new Book("Book 2", 250, 100);
+        testBook3 = new Book("Book 3", 230, 120);
+    }
+
+    @Test
+    void testConstructor() {
+        assertEquals("Book 1", testBook1.getName());
+        assertEquals(100, testBook1.getPageCount());
+        assertEquals(60, testBook1.getDuration());
+    }
 }

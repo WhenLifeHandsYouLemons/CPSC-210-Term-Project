@@ -17,9 +17,9 @@ public class TestLibrary {
     @BeforeEach
     void runBefore() {
         testLibrary = new Library();
-        testBook1 = new Book("Book 1", 100);
-        testBook2 = new Book("Book 2", 250);
-        testBook3 = new Book("Book 3", 230);
+        testBook1 = new Book("Book 1", 100, 60);
+        testBook2 = new Book("Book 2", 250, 100);
+        testBook3 = new Book("Book 3", 230, 120);
     }
 
     @Test
