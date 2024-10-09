@@ -16,7 +16,7 @@ public class TestLibrary {
 
     @BeforeEach
     void runBefore() {
-        testLibrary = new Library();
+        testLibrary = new Library("Library 1");
         testBook1 = new Book("Book 1", 100, 60);
         testBook2 = new Book("Book 2", 250, 100);
         testBook3 = new Book("Book 3", 230, 120);
@@ -24,31 +24,31 @@ public class TestLibrary {
 
     @Test
     void testConstructor() {
-        assertEquals(0, testLibrary.getHistory().size());
+        assertEquals(0, testLibrary.getBookCollection().size());
     }
 
     @Test
     void testAddBookToHistory() {
         testLibrary.addBookToHistory(testBook1);
-        assertEquals(1, testLibrary.getHistory().size());
+        assertEquals(1, testLibrary.getBookCollection().size());
     }
 
     @Test
     void testAddMultipleBooksToHistory() {
         testLibrary.addBookToHistory(testBook1);
         testLibrary.addBookToHistory(testBook2);
-        assertEquals(2, testLibrary.getHistory().size());
+        assertEquals(2, testLibrary.getBookCollection().size());
 
         testLibrary.addBookToHistory(testBook3);
-        assertEquals(3, testLibrary.getHistory().size());
+        assertEquals(3, testLibrary.getBookCollection().size());
 
         testLibrary.addBookToHistory(testBook1);
-        assertEquals(4, testLibrary.getHistory().size());
+        assertEquals(4, testLibrary.getBookCollection().size());
 
-        assertEquals(testBook1, testLibrary.getHistory().get(0));
-        assertEquals(testBook2, testLibrary.getHistory().get(1));
-        assertEquals(testBook3, testLibrary.getHistory().get(2));
-        assertEquals(testBook1, testLibrary.getHistory().get(3));
+        assertEquals(testBook1, testLibrary.getBookCollection().get(0));
+        assertEquals(testBook2, testLibrary.getBookCollection().get(1));
+        assertEquals(testBook3, testLibrary.getBookCollection().get(2));
+        assertEquals(testBook1, testLibrary.getBookCollection().get(3));
     }
 
     @Test
