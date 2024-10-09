@@ -20,4 +20,7 @@ public class Library {
     public void addBookToHistory(Book book) {
         // stub
     }
+    public Book findBook(String name) {
+        return null;    // stub
+    }
 }

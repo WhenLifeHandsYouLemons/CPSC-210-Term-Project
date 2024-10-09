@@ -50,4 +50,17 @@ public class TestLibrary {
         assertEquals(testBook3, testLibrary.getHistory().get(2));
         assertEquals(testBook1, testLibrary.getHistory().get(3));
     }
+
+    @Test
+    void testFindBook() {
+        testLibrary.addBookToHistory(testBook1);
+        testLibrary.addBookToHistory(testBook2);
+        testLibrary.addBookToHistory(testBook3);
+
+        assertEquals(testBook1, testLibrary.findBook("Book 1"));
+        assertEquals(testBook2, testLibrary.findBook("Book 2"));
+        assertEquals(testBook3, testLibrary.findBook("Book 3"));
+
+        assertNull(testLibrary.findBook("Book 4"));
+    }
 }

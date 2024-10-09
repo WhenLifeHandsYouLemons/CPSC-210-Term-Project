@@ -24,6 +24,12 @@ public class TestBook {
     void testConstructor() {
         assertEquals("Book 1", testBook1.getName());
         assertEquals(100, testBook1.getPageCount());
+        assertEquals(0, testBook1.getWordCount());
         assertEquals(60, testBook1.getDuration());
+
+        assertEquals("Book 2", testBook1.getName());
+        assertEquals(250, testBook1.getPageCount());
+        assertEquals(0, testBook1.getWordCount());
+        assertEquals(100, testBook1.getDuration());
     }
 }
