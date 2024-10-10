@@ -25,16 +25,17 @@ public class TestLibrary {
     @Test
     void testConstructor() {
         assertEquals(0, testLibrary.getBookCollection().size());
+        assertEquals("Library 1", testLibrary.getLibraryName());
     }
 
     @Test
-    void testAddBookToHistory() {
+    void testAddSingleBookToCollection() {
         testLibrary.addBookToHistory(testBook1);
         assertEquals(1, testLibrary.getBookCollection().size());
     }
 
     @Test
-    void testAddMultipleBooksToHistory() {
+    void testAddMultipleBooksToCollection() {
         testLibrary.addBookToHistory(testBook1);
         testLibrary.addBookToHistory(testBook2);
         assertEquals(2, testLibrary.getBookCollection().size());

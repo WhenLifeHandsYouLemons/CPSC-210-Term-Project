@@ -5,12 +5,10 @@ import java.util.List;
 public class Library {
 
     // MODIFIES: this
-        // stub
     // EFFECTS: Initialises the collection array list with no items in it and assigns library name
     public Library(String name) {
     }
 
-        return null;    // stub
     public List<Book> getBookCollection() {
     }
 
