@@ -5,6 +5,8 @@ import java.util.List;
 import model.Library;
 
 public class BookTrackerApp {
+    private List<Library> libraries;
+
     // MODIFIES: this
     // EFFECTS: Initialises an empty list of libraries
     public BookTrackerApp() {
