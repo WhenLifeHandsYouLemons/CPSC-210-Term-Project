@@ -3,6 +3,7 @@ package ui;
 import java.util.List;
 import java.util.ArrayList;
 
+import model.Book;
 import model.Library;
 
 // 
@@ -36,5 +37,20 @@ public class BookTrackerApp {
         }
 
         return null;
+    }
+
+    // REQUIRES: libraries.length() > 0
+    // EFFECTS: Calculates and returns the average page count of all books tracked
+    public double getAveragePageCount() {
+    }
+
+    // REQUIRES: libraries.length() > 0
+    // EFFECTS: Calculates and returns the average word count of the books tracked
+    public double getAverageWordCount() {
+    }
+
+    // REQUIRES: libraries.length() > 0
+    // EFFECTS: Calculates and returns the average reading duration of the books tracked
+    public double getAverageDuration() {
     }
 }

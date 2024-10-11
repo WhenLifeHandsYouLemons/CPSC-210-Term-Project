@@ -64,7 +64,7 @@ public class TestLibrary {
     }
 
     @Test
-    void testPageCountStat() {
+    void testAveragePageCount() {
         testLibrary.addBookToHistory(testBook1);
 
         assertEquals(100.0, testLibrary.getAveragePageCount());
@@ -79,7 +79,7 @@ public class TestLibrary {
     }
 
     @Test
-    void testWordCountStat() {
+    void testAverageWordCount() {
         testLibrary.addBookToHistory(testBook1);
 
         assertEquals(0.0, testLibrary.getAverageWordCount());
@@ -94,7 +94,7 @@ public class TestLibrary {
     }
 
     @Test
-    void testReadingDurationStat() {
+    void testAverageReadingDuration() {
         testLibrary.addBookToHistory(testBook1);
 
         assertEquals(60.0, testLibrary.getAverageDuration());
