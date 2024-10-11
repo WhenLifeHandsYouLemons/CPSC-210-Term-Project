@@ -42,15 +42,63 @@ public class BookTrackerApp {
     // REQUIRES: libraries.length() > 0
     // EFFECTS: Calculates and returns the average page count of all books tracked
     public double getAveragePageCount() {
+        double avg = 0;
+        int count = 0;
+
+        for (Library library : libraries) {
+            for (Book book : library.getBookCollection()) {
+                avg += book.getPageCount();
+            }
+
+            count += library.getBookCollection().size();
+        }
+
+        avg /= count;
+
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 
     // REQUIRES: libraries.length() > 0
     // EFFECTS: Calculates and returns the average word count of the books tracked
     public double getAverageWordCount() {
+        double avg = 0;
+        int count = 0;
+
+        for (Library library : libraries) {
+            for (Book book : library.getBookCollection()) {
+                avg += book.getWordCount();
+            }
+
+            count += library.getBookCollection().size();
+        }
+
+        avg /= count;
+
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 
     // REQUIRES: libraries.length() > 0
     // EFFECTS: Calculates and returns the average reading duration of the books tracked
     public double getAverageDuration() {
+        double avg = 0;
+        int count = 0;
+
+        for (Library library : libraries) {
+            for (Book book : library.getBookCollection()) {
+                avg += book.getDuration();
+            }
+
+            count += library.getBookCollection().size();
+        }
+
+        avg /= count;
+
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 }
