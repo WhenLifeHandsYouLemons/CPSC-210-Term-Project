@@ -19,7 +19,8 @@ public class BookTrackerApp {
 
     // REQUIRES: name is not empty
     // MODIFIES: this
-    // EFFECTS: Creates a new library with the given name and adds it to the list of libraries
+    // EFFECTS: Creates a new library with the given name and adds it to the list of
+    //          libraries
     public void addLibrary(String name) {
         libraries.add(new Library(name));
     }
@@ -99,7 +100,8 @@ public class BookTrackerApp {
     }
 
     // REQUIRES: libraries.length() > 0
-    // EFFECTS: Calculates and returns the average reading duration of the books tracked
+    // EFFECTS: Calculates and returns the average reading duration of the books
+    //          tracked
     public double getAverageDuration() {
         double avg = 0;
         int count = 0;

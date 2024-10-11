@@ -9,7 +9,8 @@ public class Library {
     private List<Book> bookCollection;
 
     // MODIFIES: this
-    // EFFECTS: Initialises the collection array list with no items in it and assigns library name
+    // EFFECTS: Initialises the collection array list with no items in it and
+    //          assigns library name
     public Library(String name) {
         bookCollection = new ArrayList<Book>();
         this.libraryName = name;
@@ -90,7 +91,8 @@ public class Library {
     }
 
     // REQUIRES: bookCollection.length() > 0
-    // EFFECTS: Calculates and returns the average reading duration of the library's books
+    // EFFECTS: Calculates and returns the average reading duration of the library's
+    //          books
     public double getAverageDuration() {
         double avg = 0;
 
