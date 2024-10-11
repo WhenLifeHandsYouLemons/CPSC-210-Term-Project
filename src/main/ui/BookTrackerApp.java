@@ -28,6 +28,16 @@ public class BookTrackerApp {
     // MODIFIES: this
     // EFFECTS: Removes a library with the given name from libraries
     public void removeLibrary(String name) {
+        int index = 0;
+
+        for (Library library : libraries) {
+            if (library.getName().equals(name)) {
+                libraries.remove(index);
+                break;
+            }
+
+            index++;
+        }
     }
 
     public List<Library> getLibraries() {

@@ -42,6 +42,16 @@ public class Library {
     // MODIFIES: this
     // EFFECTS: Removes a book with the given name from bookCollection
     public void removeBookFromLibrary(String name) {
+        int index = 0;
+
+        for (Book book : bookCollection) {
+            if (book.getName().equals(name)) {
+                bookCollection.remove(index);
+                break;
+            }
+
+            index++;
+        }
     }
 
     public String getName() {
