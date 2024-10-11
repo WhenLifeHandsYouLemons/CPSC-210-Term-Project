@@ -1,12 +1,13 @@
 package model;
 
-// 
+// Stores information on the name, page count, word count, and reading duration of a book
 public class Book {
     private String name;
     private int pageCount;
     private int wordCount;
     private int duration;
 
+    // REQUIRES: name is not empty and pageCount > 0 and duration > 0
     // MODIFIES: this
     // EFFECTS: Instantiates a new Book with the given name, pageCount, and duration (in minutes)
     public Book(String name, int pageCount, int duration) {

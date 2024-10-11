@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import model.Book;
 import model.Library;
 
-// 
+// Stores a list of libraries, manages the libraries, and shows statistics on all
+//  books stored in every library.
 public class BookTrackerApp {
     private List<Library> libraries;
 

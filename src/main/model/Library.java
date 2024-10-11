@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
-// 
+// Stores a list of books and gives statistics based on those.
 public class Library {
     private String libraryName;
     private List<Book> bookCollection;
@@ -36,6 +36,12 @@ public class Library {
         }
 
         return null;
+    }
+
+    // REQUIRES: A Book with the given name exists in bookCollection
+    // MODIFIES: this
+    // EFFECTS: Removes a book with the given name from bookCollection
+    public void removeBookFromLibrary(String name) {
     }
 
     public String getLibraryName() {
