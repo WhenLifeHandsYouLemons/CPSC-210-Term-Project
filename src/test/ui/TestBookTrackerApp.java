@@ -56,6 +56,27 @@ public class TestBookTrackerApp {
     }
 
     @Test
+    void testRemoveLibrary() {
+        testBookTrackerApp.addLibrary("Library 1");
+        testBookTrackerApp.addLibrary("Library 2");
+        testBookTrackerApp.addLibrary("Library 3");
+
+        testBookTrackerApp.removeLibrary("Library 1");
+
+        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(0).getName());
+        assertEquals("Library 3", testBookTrackerApp.getLibraries().get(1).getName());
+        assertEquals(2, testBookTrackerApp.getLibraries().size());
+
+        testBookTrackerApp.addLibrary("Library 1");
+
+        testBookTrackerApp.removeLibrary("Library 3");
+
+        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(0).getName());
+        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(1).getName());
+        assertEquals(2, testBookTrackerApp.getLibraries().size());
+    }
+
+    @Test
     void testAveragePageCount() {
         testBookTrackerApp.addLibrary("Library 1");
         testBookTrackerApp.addLibrary("Library 2");
