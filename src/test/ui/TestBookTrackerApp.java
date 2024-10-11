@@ -28,7 +28,7 @@ public class TestBookTrackerApp {
     void testAddSingleLibrary() {
         testBookTrackerApp.addLibrary("Library 1");
 
-        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getLibraryName());
+        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getName());
     }
 
     @Test
@@ -37,22 +37,22 @@ public class TestBookTrackerApp {
         testBookTrackerApp.addLibrary("Library 2");
         testBookTrackerApp.addLibrary("Library 3");
 
-        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getLibraryName());
-        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(1).getLibraryName());
-        assertEquals("Library 3", testBookTrackerApp.getLibraries().get(2).getLibraryName());
+        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getName());
+        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(1).getName());
+        assertEquals("Library 3", testBookTrackerApp.getLibraries().get(2).getName());
     }
 
     @Test
     void testFindLibrary() {
         testBookTrackerApp.addLibrary("Library 1");
 
-        assertEquals("Library 1", testBookTrackerApp.findLibrary("Library 1").getLibraryName());
+        assertEquals("Library 1", testBookTrackerApp.findLibrary("Library 1").getName());
         assertNull(testBookTrackerApp.findLibrary("Library 2"));
 
         testBookTrackerApp.addLibrary("Library 2");
 
-        assertEquals("Library 1", testBookTrackerApp.findLibrary("Library 1").getLibraryName());
-        assertEquals("Library 2", testBookTrackerApp.findLibrary("Library 2").getLibraryName());
+        assertEquals("Library 1", testBookTrackerApp.findLibrary("Library 1").getName());
+        assertEquals("Library 2", testBookTrackerApp.findLibrary("Library 2").getName());
     }
 
     @Test

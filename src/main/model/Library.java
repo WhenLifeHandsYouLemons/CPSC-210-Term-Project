@@ -44,7 +44,7 @@ public class Library {
     public void removeBookFromLibrary(String name) {
     }
 
-    public String getLibraryName() {
+    public String getName() {
         return this.libraryName;
     }
 

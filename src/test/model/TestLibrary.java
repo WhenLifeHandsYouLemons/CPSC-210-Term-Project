@@ -23,7 +23,7 @@ public class TestLibrary {
     @Test
     void testConstructor() {
         assertEquals(0, testLibrary.getBookCollection().size());
-        assertEquals("Library 1", testLibrary.getLibraryName());
+        assertEquals("Library 1", testLibrary.getName());
     }
 
     @Test
@@ -61,6 +61,27 @@ public class TestLibrary {
         assertEquals(testBook3, testLibrary.findBook("Book 3"));
 
         assertNull(testLibrary.findBook("Book 4"));
+    }
+
+    @Test
+    void testRemoveBook() {
+        testLibrary.addBookToHistory(testBook1);
+        testLibrary.addBookToHistory(testBook2);
+        testLibrary.addBookToHistory(testBook3);
+
+        testLibrary.removeBookFromLibrary(testBook1.getName());
+
+        assertEquals(testBook2, testLibrary.getBookCollection().get(0));
+        assertEquals(testBook3, testLibrary.getBookCollection().get(1));
+        assertEquals(2, testLibrary.getBookCollection().size());
+
+        testLibrary.addBookToHistory(testBook1);
+
+        testLibrary.removeBookFromLibrary(testBook3.getName());
+
+        assertEquals(testBook2, testLibrary.getBookCollection().get(0));
+        assertEquals(testBook1, testLibrary.getBookCollection().get(1));
+        assertEquals(2, testLibrary.getBookCollection().size());
     }
 
     @Test

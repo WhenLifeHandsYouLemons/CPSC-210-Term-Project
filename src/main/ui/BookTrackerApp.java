@@ -24,6 +24,12 @@ public class BookTrackerApp {
         libraries.add(new Library(name));
     }
 
+    // REQUIRES: A Library with the given name exists in libraries
+    // MODIFIES: this
+    // EFFECTS: Removes a library with the given name from libraries
+    public void removeLibrary(String name) {
+    }
+
     public List<Library> getLibraries() {
         return this.libraries;
     }
@@ -32,7 +38,7 @@ public class BookTrackerApp {
     // EFFECTS: Returns the Library with the given name or null if none is found
     public Library findLibrary(String name) {
         for (Library library : libraries) {
-            if (library.getLibraryName().equals(name)) {
+            if (library.getName().equals(name)) {
                 return library;
             }
         }
