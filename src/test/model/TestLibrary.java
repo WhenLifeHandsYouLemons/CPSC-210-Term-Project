@@ -2,8 +2,6 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,5 +61,50 @@ public class TestLibrary {
         assertEquals(testBook3, testLibrary.findBook("Book 3"));
 
         assertNull(testLibrary.findBook("Book 4"));
+    }
+
+    @Test
+    void testPageCountStat() {
+        testLibrary.addBookToHistory(testBook1);
+
+        assertEquals(100.0, testLibrary.getAveragePageCount());
+
+        testLibrary.addBookToHistory(testBook2);
+
+        assertEquals(175.0, testLibrary.getAveragePageCount());
+
+        testLibrary.addBookToHistory(testBook3);
+
+        assertEquals(193.33, testLibrary.getAveragePageCount());
+    }
+
+    @Test
+    void testWordCountStat() {
+        testLibrary.addBookToHistory(testBook1);
+
+        assertEquals(0.0, testLibrary.getAverageWordCount());
+
+        testLibrary.addBookToHistory(testBook2);
+
+        assertEquals(0.0, testLibrary.getAverageWordCount());
+
+        testLibrary.addBookToHistory(testBook3);
+
+        assertEquals(0.0, testLibrary.getAverageWordCount());
+    }
+
+    @Test
+    void testReadingDurationStat() {
+        testLibrary.addBookToHistory(testBook1);
+
+        assertEquals(60.0, testLibrary.getAverageDuration());
+
+        testLibrary.addBookToHistory(testBook2);
+
+        assertEquals(80.0, testLibrary.getAverageDuration());
+
+        testLibrary.addBookToHistory(testBook3);
+
+        assertEquals(93.33, testLibrary.getAverageDuration());
     }
 }

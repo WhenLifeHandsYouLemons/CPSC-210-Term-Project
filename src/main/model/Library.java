@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 import java.util.ArrayList;
 
+// 
 public class Library {
     private String libraryName;
     private List<Book> bookCollection;
@@ -11,6 +12,7 @@ public class Library {
     // EFFECTS: Initialises the collection array list with no items in it and assigns library name
     public Library(String name) {
         bookCollection = new ArrayList<Book>();
+        this.libraryName = name;
     }
 
     public List<Book> getBookCollection() {
@@ -33,28 +35,56 @@ public class Library {
             }
         }
 
-        return null; // stub
+        return null;
     }
 
     public String getLibraryName() {
-        return "";  // stub
+        return this.libraryName;
     }
 
     // REQUIRES: bookCollection.length() > 0
     // EFFECTS: Calculates and returns the average page count of the library's books
     public double getAveragePageCount() {
-        return 0;   // stub
+        double avg = 0;
+
+        for (Book book : bookCollection) {
+            avg += book.getPageCount();
+        }
+
+        avg /= bookCollection.size();
+
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 
     // REQUIRES: bookCollection.length() > 0
     // EFFECTS: Calculates and returns the average word count of the library's books
     public double getAverageWordCount() {
-        return 0;   // stub
+        double avg = 0.0;
+
+        for (Book book : bookCollection) {
+            avg += book.getWordCount();
+        }
+
+        avg /= bookCollection.size();
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 
     // REQUIRES: bookCollection.length() > 0
     // EFFECTS: Calculates and returns the average reading duration of the library's books
     public double getAverageDuration() {
-        return 0;   // stub
+        double avg = 0;
+
+        for (Book book : bookCollection) {
+            avg += book.getDuration();
+        }
+
+        avg /= bookCollection.size();
+        avg = Math.round(avg * 100.0) / 100.0;
+
+        return avg;
     }
 }

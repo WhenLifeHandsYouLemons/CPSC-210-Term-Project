@@ -2,8 +2,6 @@ package ui;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
 
@@ -29,7 +27,7 @@ public class TestBookTrackerApp {
     void testAddSingleLibrary() {
         testBookTrackerApp.addLibrary("Library 1");
 
-        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0));
+        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getLibraryName());
     }
 
     @Test
@@ -38,9 +36,9 @@ public class TestBookTrackerApp {
         testBookTrackerApp.addLibrary("Library 2");
         testBookTrackerApp.addLibrary("Library 3");
 
-        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0));
-        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(1));
-        assertEquals("Library 3", testBookTrackerApp.getLibraries().get(2));
+        assertEquals("Library 1", testBookTrackerApp.getLibraries().get(0).getLibraryName());
+        assertEquals("Library 2", testBookTrackerApp.getLibraries().get(1).getLibraryName());
+        assertEquals("Library 3", testBookTrackerApp.getLibraries().get(2).getLibraryName());
     }
 
     @Test
