@@ -19,3 +19,5 @@ I think that my target audience would be mostly people who enjoy reading books a
 - As a user, I want to be able to create a library and add books to it.
 - As a user, I want to be able to see the list of my reading history.
 - As a user, I want to be able to add statistics such as word count, page count, and reading duration to the books in my library.
+- As a user, I want to have the option to save my libraries and reading history to a file.
+- As a user, I want to have the option to load my libraries and reading history from a file.
