@@ -15,6 +15,8 @@ public class Main {
         String option;
 
         BookTrackerApp bookTrackerApp = new BookTrackerApp();
+        Writer writer = new Writer("./data/bookTrackerAppData.json");
+        Reader reader = new Reader("./data/bookTrackerAppData.json");
 
         do {
             printHomeHelpMessage();
@@ -30,12 +32,25 @@ public class Main {
                 viewAllBooksOption(bookTrackerApp);
             } else if (option.equals("remove library")) {
                 removeLibraryOption(bookTrackerApp, scanner);
+            } else if (option.equals("save library")) {
+                saveLibraryOption(writer, bookTrackerApp);
+            } else if (option.equals("load library")) {
+                loadLibraryOption(reader, bookTrackerApp);
             }
         } while (!option.equals("exit"));
 
         scanner.close();
     }
 
+    private static void saveLibraryOption(Writer writer, BookTrackerApp bookTrackerApp) {
+        writer.writeToFile(bookTrackerApp);
+    }
+
+    private static void loadLibraryOption(Reader reader, BookTrackerApp bookTrackerApp) {
+        reader.readFromFile(bookTrackerApp);
+    }
+
+    // EFFECTS: Prints out the options available to the user on the home page
     private static void printHomeHelpMessage() {
         System.out.println("\n----------------------------------------------------------");
         System.out.println("Choose one of the following options:\n");
@@ -44,10 +59,13 @@ public class Main {
         System.out.println("'view stats' - Prints out your total reading statistics");
         System.out.println("'view all books' - Prints out all the books you've added");
         System.out.println("'remove library' - Removes a library");
+        System.out.println("'save library' - Saves all libraries and books tracked to an external file.");
+        System.out.println("'load library' - Loads libraries and books tracked from an external file.");
         System.out.println("'exit' - Closes the program");
         System.out.println("----------------------------------------------------------");
     }
 
+    // EFFECTS: Prints out the options available to the user inside a library
     private static void printLibraryHelpMessage(Library selectedLibrary) {
         System.out.println("\n----------------------------------------------------------");
         System.out.println(selectedLibrary.getName());
@@ -64,6 +82,8 @@ public class Main {
         System.out.println("----------------------------------------------------------");
     }
 
+    // MODIFIES: bookTrackerApp
+    // EFFECTS: Prints out all libraries available, asks for a library's name, and opens that library
     private static void removeLibraryOption(BookTrackerApp bookTrackerApp, Scanner scanner) {
         System.out.println("Libraries available:");
         for (Library library : bookTrackerApp.getLibraries()) {
@@ -96,6 +116,8 @@ public class Main {
         }
     }
 
+    // MODIFIES: bookTrackerApp
+    // EFFECTS: Asks for the name of the new library and creates it
     private static void newLibraryOption(BookTrackerApp bookTrackerApp, Scanner scanner) {
         System.out.print("\nEnter the name of the library to be created: ");
 
@@ -109,10 +131,10 @@ public class Main {
         }
     }
 
+    // EFFECTS: Prints out information on all books that have been tracked
     private static void viewAllBooksOption(BookTrackerApp bookTrackerApp) {
         int index = 1;
 
-        // Show all books and book info
         System.out.println("\n------------------------------------------------");
         System.out.println("All books:\n");
         for (Library library : bookTrackerApp.getLibraries()) {
@@ -133,6 +155,7 @@ public class Main {
         System.out.println("\n------------------------------------------------");
     }
 
+    // EFFECTS: Prints out overall statistics for all books
     private static void viewStatisticsOption(BookTrackerApp bookTrackerApp) {
         System.out.println("\n------------------------------------------------");
         System.out.println("All Statistics:\n");
@@ -145,6 +168,7 @@ public class Main {
         System.out.println("\n------------------------------------------------");
     }
 
+    // EFFECTS: Prints out all libraries available, asks for the name of a library and opens it
     private static void viewLibraryOption(BookTrackerApp bookTrackerApp, Scanner scanner) {
         listAllLibraries(bookTrackerApp);
 
@@ -164,6 +188,7 @@ public class Main {
         }
     }
 
+    // EFFECTS: Prints out all available libraries
     private static void listAllLibraries(BookTrackerApp bookTrackerApp) {
         System.out.println("\nLibraries available:");
         List<Library> libraries = bookTrackerApp.getLibraries();
@@ -174,6 +199,8 @@ public class Main {
         System.out.println("");
     }
 
+    // MODIFIES: selectedLibrary
+    // EFFECTS: Asks for the information about a book and adds it to the selected library
     private static void addBookOption(Library selectedLibrary, Scanner scanner) {
         try {
             System.out.print("Enter the name of the book: ");
@@ -198,6 +225,7 @@ public class Main {
         }
     }
 
+    // EFFECTS: Prints out the overall statistics of the selected library
     private static void viewLibraryStatisticsOption(Library selectedLibrary) {
         System.out.println("\n------------------------------------------------");
         System.out.print(selectedLibrary.getName());
@@ -211,6 +239,7 @@ public class Main {
         System.out.println("\n------------------------------------------------");
     }
 
+    // EFFECTS: Prints out information on all books in the selected library
     private static void viewLibraryBooksOption(Library selectedLibrary) {
         int index = 1;
 
@@ -233,6 +262,8 @@ public class Main {
         System.out.println("\n------------------------------------------------");
     }
 
+    // MODIFIES: selectedLibrary
+    // EFFECTS: Prints out all books in the selected library, asks for a book name, and removes that book
     private static void removeBookOption(Library selectedLibrary, Scanner scanner) {
         System.out.println("Books available:");
         for (Book book : selectedLibrary.getBookCollection()) {
@@ -262,6 +293,7 @@ public class Main {
         }
     }
 
+    // Prints out available options in the library and asks for input on an option
     private static void listLibraryOptions(Library selectedLibrary, Scanner scanner) {
         String option;
 

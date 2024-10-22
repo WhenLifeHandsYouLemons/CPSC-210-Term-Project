@@ -12,15 +12,13 @@ public class Writer {
         // stub
     }
 
-    // REQUIRES: 
-    // MODIFIES: 
+    // REQUIRES: bookTrackerApp should be initialised and not null
     // EFFECTS: Runs functions to convert the current program state to JSON and save it to filePath
     public void writeToFile(BookTrackerApp bookTrackerApp) {
         // stub
     }
 
     // REQUIRES: JSONObject is not null
-    // MODIFIES: 
     // EFFECTS: Converts the given jsonObject to a string
     public String convertToString(JSONObject jsonObject) {
         return "";  // stub
