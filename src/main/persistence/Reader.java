@@ -1,5 +1,7 @@
 package persistence;
 
+import java.io.FileNotFoundException;
+
 import ui.BookTrackerApp;
 
 public class Reader {
@@ -14,7 +16,7 @@ public class Reader {
     // MODIFIES: bookTrackerApp
     // EFFECTS: Runs functions to read the file at filePath and convert the JSON to
     // a program state
-    public void readFromFile(BookTrackerApp bookTrackerApp) {
+    public void readFromFile(BookTrackerApp bookTrackerApp) throws FileNotFoundException {
         // stub
     }
 

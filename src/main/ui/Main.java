@@ -1,12 +1,11 @@
 package ui;
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 import java.util.List;
 
-import model.Book;
-import model.Library;
-import persistence.Writer;
-import persistence.Reader;
+import model.*;
+import persistence.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -62,7 +61,7 @@ public class Main {
         try {
             writer.writeToFile(bookTrackerApp);
             System.out.println("Saved libraries to '" + writer.getFilePath() + "'!");
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             System.out.println("Unable to save libraries to '" + writer.getFilePath() + "'! Please try again.");
         }
     }
@@ -71,7 +70,12 @@ public class Main {
     // EFFECTS: Reads app data from a JSON file into the given bookTrackerApp
     // instance
     private static void loadLibraryOption(Reader reader, BookTrackerApp bookTrackerApp) {
-        reader.readFromFile(bookTrackerApp);
+        try {
+            reader.readFromFile(bookTrackerApp);
+            System.out.println("Loaded libraries from '" + reader.getFilePath() + "'!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to load libraries from '" + reader.getFilePath() + "'! Please try again.");
+        }
     }
 
     // EFFECTS: Prints out the options available to the user on the home page
