@@ -7,14 +7,16 @@ import ui.BookTrackerApp;
 
 public class Writer {
     // REQUIRES: filePath is not empty
-    // EFFECTS: Instantiates the Writer object and creates a new JSONObject for saving data
+    // EFFECTS: Instantiates the Writer object, creates a new JSONObject for saving
+    // data, and saves the filePath
     public Writer(String filePath) {
         // stub
     }
 
     // REQUIRES: bookTrackerApp should be initialised and not null
     // MODIFIES: jsonObject
-    // EFFECTS: Runs functions to convert the current program state to JSON and save it to filePath
+    // EFFECTS: Runs functions to convert the current program state to JSON and save
+    // it to filePath
     public void writeToFile(BookTrackerApp bookTrackerApp) {
         // stub
     }
@@ -33,5 +35,9 @@ public class Writer {
 
     public JSONObject getJsonObject() {
         return null;    // stub
+    }
+
+    public String getFilePath() {
+        return null; // stub
     }
 }
