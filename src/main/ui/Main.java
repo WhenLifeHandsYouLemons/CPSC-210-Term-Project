@@ -12,40 +12,56 @@ public class Main {
     public static void main(String[] args) {
         // Create scanner object for user input
         Scanner scanner = new Scanner(System.in);
-        String option;
+        String option = "";
 
+        // Create main application instance
         BookTrackerApp bookTrackerApp = new BookTrackerApp();
-        Writer writer = new Writer("./data/bookTrackerAppData.json");
-        Reader reader = new Reader("./data/bookTrackerAppData.json");
 
+        // Create serialiser instances for save/load features
+        String filePath = "./data/bookTrackerAppData.json";
+        Writer writer = new Writer(filePath);
+        Reader reader = new Reader(filePath);
+
+        // Run main program
+        homePage(bookTrackerApp, scanner, option, writer, reader);
+
+        // Close scanner to stop memory leaks
+        scanner.close();
+    }
+
+    // MODIFIES: bookTrackerApp, option, writer, reader
+    // EFFECTS: Prints out available user options and asks for user input until "exit" is typed
+    private static void homePage(BookTrackerApp app, Scanner scanner, String option, Writer writer, Reader reader) {
         do {
             printHomeHelpMessage();
 
             option = scanner.nextLine();
             if (option.equals("new library")) {
-                newLibraryOption(bookTrackerApp, scanner);
+                newLibraryOption(app, scanner);
             } else if (option.equals("view library")) {
-                viewLibraryOption(bookTrackerApp, scanner);
+                viewLibraryOption(app, scanner);
             } else if (option.equals("view stats")) {
-                viewStatisticsOption(bookTrackerApp);
+                viewStatisticsOption(app);
             } else if (option.equals("view all books")) {
-                viewAllBooksOption(bookTrackerApp);
+                viewAllBooksOption(app);
             } else if (option.equals("remove library")) {
-                removeLibraryOption(bookTrackerApp, scanner);
+                removeLibraryOption(app, scanner);
             } else if (option.equals("save library")) {
-                saveLibraryOption(writer, bookTrackerApp);
+                saveLibraryOption(writer, app);
             } else if (option.equals("load library")) {
-                loadLibraryOption(reader, bookTrackerApp);
+                loadLibraryOption(reader, app);
             }
         } while (!option.equals("exit"));
-
-        scanner.close();
     }
 
+    // MODIFIES: writer
+    // EFFECTS: Saves all the data currently stored in bookTrackerApp to a JSON file
     private static void saveLibraryOption(Writer writer, BookTrackerApp bookTrackerApp) {
         writer.writeToFile(bookTrackerApp);
     }
 
+    // MODIFIES: bookTrackerApp
+    // EFFECTS: Reads app data from a JSON file into the given bookTrackerApp instance
     private static void loadLibraryOption(Reader reader, BookTrackerApp bookTrackerApp) {
         reader.readFromFile(bookTrackerApp);
     }

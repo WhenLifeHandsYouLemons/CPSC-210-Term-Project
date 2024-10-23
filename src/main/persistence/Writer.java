@@ -13,6 +13,7 @@ public class Writer {
     }
 
     // REQUIRES: bookTrackerApp should be initialised and not null
+    // MODIFIES: jsonObject
     // EFFECTS: Runs functions to convert the current program state to JSON and save it to filePath
     public void writeToFile(BookTrackerApp bookTrackerApp) {
         // stub

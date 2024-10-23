@@ -1,6 +1,10 @@
 package model;
 
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 // Stores a list of books and gives statistics based on those.
@@ -10,7 +14,7 @@ public class Library {
 
     // MODIFIES: this
     // EFFECTS: Initialises the collection array list with no items in it and
-    //          assigns library name
+    // assigns library name
     public Library(String name) {
         bookCollection = new ArrayList<Book>();
         this.libraryName = name;
@@ -92,7 +96,7 @@ public class Library {
 
     // REQUIRES: bookCollection.length() > 0
     // EFFECTS: Calculates and returns the average reading duration of the library's
-    //          books
+    // books
     public double getAverageDuration() {
         double avg = 0;
 
@@ -104,5 +108,16 @@ public class Library {
         avg = Math.round(avg * 100.0) / 100.0;
 
         return avg;
+    }
+
+    // EFFECTS: Converts library information and adds book information into JSON
+    // format and returns it
+    public JSONObject convertToJson() {
+        return null; // stub
+    }
+
+    // EFFECTS: Converts all stored book data to JSON format and returns it
+    public JSONArray convertBooksToJson() {
+        return null; // stub
     }
 }

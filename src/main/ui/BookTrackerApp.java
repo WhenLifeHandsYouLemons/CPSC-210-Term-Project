@@ -1,6 +1,9 @@
 package ui;
 
 import java.util.List;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import model.Book;
@@ -20,7 +23,7 @@ public class BookTrackerApp {
     // REQUIRES: name is not empty
     // MODIFIES: this
     // EFFECTS: Creates a new library with the given name and adds it to the list of
-    //          libraries
+    // libraries
     public void addLibrary(String name) {
         libraries.add(new Library(name));
     }
@@ -101,7 +104,7 @@ public class BookTrackerApp {
 
     // REQUIRES: libraries.length() > 0
     // EFFECTS: Calculates and returns the average reading duration of the books
-    //          tracked
+    // tracked
     public double getAverageDuration() {
         double avg = 0;
         int count = 0;
@@ -119,5 +122,10 @@ public class BookTrackerApp {
         avg = Math.round(avg * 100.0) / 100.0;
 
         return avg;
+    }
+
+    // EFFECTS: Adds each library's information into the JSON object and returns it
+    public JSONObject convertToJson() {
+        return null; // stub
     }
 }
