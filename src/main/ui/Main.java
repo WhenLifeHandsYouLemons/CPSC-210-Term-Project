@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import model.*;
@@ -50,7 +51,7 @@ public class Main {
             } else if (option.equals("save library")) {
                 saveLibraryOption(writer, bookTrackerApp);
             } else if (option.equals("load library")) {
-                loadLibraryOption(reader, bookTrackerApp);
+                bookTrackerApp = loadLibraryOption(reader, bookTrackerApp);
             }
         } while (!option.equals("exit"));
     }
@@ -69,13 +70,15 @@ public class Main {
     // MODIFIES: bookTrackerApp
     // EFFECTS: Reads app data from a JSON file into the given bookTrackerApp
     // instance
-    private static void loadLibraryOption(Reader reader, BookTrackerApp bookTrackerApp) {
+    private static BookTrackerApp loadLibraryOption(Reader reader, BookTrackerApp bookTrackerApp) {
         try {
-            reader.readFromFile(bookTrackerApp);
+            bookTrackerApp = reader.readFromFile();
             System.out.println("Loaded libraries from '" + reader.getFilePath() + "'!");
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("Unable to load libraries from '" + reader.getFilePath() + "'! Please try again.");
         }
+
+        return bookTrackerApp;
     }
 
     // EFFECTS: Prints out the options available to the user on the home page

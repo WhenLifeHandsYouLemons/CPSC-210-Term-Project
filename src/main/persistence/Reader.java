@@ -1,7 +1,15 @@
 package persistence;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
+import org.json.JSONObject;
+
+import model.Book;
+import model.Library;
 import ui.BookTrackerApp;
 
 public class Reader {
@@ -18,6 +26,18 @@ public class Reader {
     // a program state
     public void readFromFile(BookTrackerApp bookTrackerApp) throws FileNotFoundException {
         // stub
+
+    // EFFECTS: reads source file as string and returns it
+    // Taken from: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    private String readFile(String source) throws IOException {
+        StringBuilder contentBuilder = new StringBuilder();
+        return contentBuilder.toString();
+    }
+
+    // EFFECTS: parses bookTrackerApp from JSON object and returns it
+    private BookTrackerApp parseBookTrackerApp(JSONObject jsonObject) {
+        BookTrackerApp bookTrackerApp = new BookTrackerApp();
+        return bookTrackerApp;
     }
 
     public String getFilePath() {

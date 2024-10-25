@@ -2,7 +2,6 @@ package persistence;
 
 import org.json.JSONObject;
 import java.io.*;
-
 import ui.BookTrackerApp;
 
 public class Writer {
