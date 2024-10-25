@@ -37,6 +37,13 @@ public class Book {
 
     // EFFECTS: Converts the data in the book object to JSON format
     public JSONObject convertToJson() {
-        return null; // stub
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("name", name);
+        jsonObject.put("pageCount", pageCount);
+        jsonObject.put("wordCount", wordCount);
+        jsonObject.put("duration", duration);
+
+        return jsonObject;
     }
 }

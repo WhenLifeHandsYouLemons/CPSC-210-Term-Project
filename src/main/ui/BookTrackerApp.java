@@ -127,6 +127,15 @@ public class BookTrackerApp {
 
     // EFFECTS: Adds each library's information into the JSON object and returns it
     public JSONObject convertToJson() {
-        return null; // stub
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        for (Library lib : libraries) {
+            jsonArray.put(lib.convertToJson());
+        }
+
+        jsonObject.put("libraries", jsonArray);
+
+        return jsonObject;
     }
 }

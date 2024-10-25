@@ -113,11 +113,22 @@ public class Library {
     // EFFECTS: Converts library information and adds book information into JSON
     // format and returns it
     public JSONObject convertToJson() {
-        return null; // stub
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("libraryName", libraryName);
+        jsonObject.put("bookCollection", convertBooksToJson());
+
+        return jsonObject;
     }
 
     // EFFECTS: Converts all stored book data to JSON format and returns it
-    public JSONArray convertBooksToJson() {
-        return null; // stub
+    private JSONArray convertBooksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Book book : bookCollection) {
+            jsonArray.put(book.convertToJson());
+        }
+
+        return jsonArray;
     }
 }
