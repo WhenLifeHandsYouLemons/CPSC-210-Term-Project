@@ -1,0 +1,28 @@
+{"libraries": [
+    {
+        "libraryName": "LibA",
+        "bookCollection": [{
+            "duration": 34,
+            "pageCount": 12,
+            "wordCount": 0,
+            "name": "BookA"
+        }]
+    },
+    {
+        "libraryName": "LibB",
+        "bookCollection": [
+            {
+                "duration": 78,
+                "pageCount": 56,
+                "wordCount": 0,
+                "name": "BookB"
+            },
+            {
+                "duration": 1112,
+                "pageCount": 910,
+                "wordCount": 0,
+                "name": "BookC"
+            }
+        ]
+    }
+]}
