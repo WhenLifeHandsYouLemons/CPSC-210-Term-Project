@@ -31,6 +31,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set the program to exit when the close button is
                                                            // clicked
         setSize(850, 600); // Set window size
+        setLocationRelativeTo(null);
 
         int columnPadding = 50;
 
@@ -218,9 +219,13 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         try {
             writer.writeToFile(bta);
-            System.out.println("Saved libraries to '" + writer.getFilePath() + "'!");
+            JOptionPane.showMessageDialog(this,
+                    "Saved libraries to '" + writer.getFilePath() + "'!",
+                    "Saved libraries", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to save libraries to '" + writer.getFilePath() + "'! Please try again.");
+            JOptionPane.showMessageDialog(this,
+                    "Unable to save libraries to '" + writer.getFilePath() + "'! Please try again.",
+                    "Unable to save libraries", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -229,9 +234,13 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         try {
             bta = reader.readFromFile();
-            System.out.println("Loaded libraries from '" + reader.getFilePath() + "'!");
+            JOptionPane.showMessageDialog(this,
+                    "Loaded libraries from '" + reader.getFilePath() + "'!",
+                    "Loaded libraries", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            System.out.println("Unable to load libraries from '" + reader.getFilePath() + "'! Please try again.");
+            JOptionPane.showMessageDialog(this,
+                    "Unable to load libraries from '" + reader.getFilePath() + "'! Please try again.",
+                    "Unable to load libraries", JOptionPane.ERROR_MESSAGE);
         }
 
         return bta;
