@@ -23,6 +23,8 @@ import persistence.Writer;
 public class BookTrackerAppGUI extends JFrame implements ActionListener {
     protected LibraryApp bta;
     private String filePath = "./data/bookTrackerAppData.json";
+    private DefaultListModel<String> libraryListModel;
+    private JList<String> libraryList;
 
     public BookTrackerAppGUI() {
         super("Book Tracker App"); // Create the main app frame
@@ -113,37 +115,66 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         thirdColumnInfo.setBackground(null);
         // Set layout for roughly 2:1 ratio
         thirdColumn.setLayout(new GridLayout(1, 1));
-        GridBagLayout gridBagLayout = new GridBagLayout();
-        thirdColumnInfo.setLayout(gridBagLayout);
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.HORIZONTAL;
+        GridBagLayout columnGridBagLayout = new GridBagLayout();
+        thirdColumnInfo.setLayout(columnGridBagLayout);
+        GridBagConstraints columnGridBagConstraints = new GridBagConstraints();
+        columnGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
 
-        // Search box area
-        JPanel searchPanel = new JPanel();
-        searchPanel.setBackground(new Color(0, 255, 0));
-        c.weightx = 1.0;
-        c.weighty = 0.6;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.fill = GridBagConstraints.BOTH;
-        thirdColumnInfo.add(searchPanel, c);
+        // View library panel
+        JPanel viewLibraryPanel = new JPanel();
+
+        GridBagLayout viewLibraryGridBagLayout = new GridBagLayout();
+        GridBagConstraints viewLibraryGridBagConstraints = new GridBagConstraints();
+        viewLibraryGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+
+        viewLibraryPanel.setLayout(viewLibraryGridBagLayout);
+        viewLibraryPanel.setBackground(new Color(0, 255, 0));
+        columnGridBagConstraints.weightx = 1.0;
+        columnGridBagConstraints.weighty = 0.6;
+        columnGridBagConstraints.gridx = 0;
+        columnGridBagConstraints.gridy = 0;
+        columnGridBagConstraints.fill = GridBagConstraints.BOTH;
+
+        // Library list section
+        libraryListModel = new DefaultListModel<String>();
+        libraryList = new JList<String>(libraryListModel);
+        libraryList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        libraryList.setLayoutOrientation(JList.VERTICAL);
+
+        // Library list scroll pane
+        JScrollPane libraryListScrollPane = new JScrollPane(libraryList);
+        libraryListScrollPane.setSize(1000, 1000);
+        viewLibraryGridBagConstraints.weightx = 1.0;
+        viewLibraryGridBagConstraints.weighty = 0.9;
+        viewLibraryGridBagConstraints.gridx = 0;
+        viewLibraryGridBagConstraints.gridy = 0;
+        viewLibraryGridBagConstraints.fill = GridBagConstraints.BOTH;
+        viewLibraryPanel.add(libraryListScrollPane, viewLibraryGridBagConstraints);
+
+        // Open library button
+        JButton openLibraryButton = new JButton("Open selected library");
+        openLibraryButton.setBackground(new Color(200, 55, 100));
+        viewLibraryGridBagConstraints.weighty = 0.1;
+        viewLibraryGridBagConstraints.gridy = 1;
+        viewLibraryPanel.add(openLibraryButton, viewLibraryGridBagConstraints);
+
+        thirdColumnInfo.add(viewLibraryPanel, columnGridBagConstraints);
 
         // Spacer panel
         JPanel spacerPanel = new JPanel();
-        c.weighty = 0.15;
-        c.gridy = 1;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        thirdColumnInfo.add(spacerPanel, c);
+        columnGridBagConstraints.weighty = 0.15;
+        columnGridBagConstraints.gridy = 1;
+        columnGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        thirdColumnInfo.add(spacerPanel, columnGridBagConstraints);
 
         // Exit button
         JButton exitButton = new JButton("Exit");
         exitButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
         exitButton.setBackground(new Color(255, 255, 0));
-        c.weighty = 0.15;
-        c.gridy = 2;
-        c.ipady = -10;
-        c.fill = GridBagConstraints.BOTH;
-        thirdColumnInfo.add(exitButton, c);
+        columnGridBagConstraints.weighty = 0.15;
+        columnGridBagConstraints.gridy = 2;
+        columnGridBagConstraints.fill = GridBagConstraints.BOTH;
+        thirdColumnInfo.add(exitButton, columnGridBagConstraints);
 
         // Set button actions, event listeners, and tooltips
         newLibraryButton.setActionCommand("new library");
@@ -152,6 +183,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         viewAllBooksButton.setActionCommand("view all books");
         saveLibraryButton.setActionCommand("save library");
         loadLibraryButton.setActionCommand("load library");
+        openLibraryButton.setActionCommand("open library");
         exitButton.setActionCommand("exit");
         newLibraryButton.addActionListener(this);
         viewStatsButton.addActionListener(this);
@@ -159,6 +191,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         removeLibraryButton.addActionListener(this);
         viewAllBooksButton.addActionListener(this);
         loadLibraryButton.addActionListener(this);
+        openLibraryButton.addActionListener(this);
         exitButton.addActionListener(this);
 
         // Add all items to the main GUI frame
@@ -186,35 +219,39 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
             saveLibrary();
         } else if ("load library".equals(e.getActionCommand())) {
             bta = loadLibrary();
+        } else if ("open library".equals(e.getActionCommand())) {
+            openLibrary();
         } else if ("exit".equals(e.getActionCommand())) {
             dispose();
         }
     }
 
     private void createLibrary() {
-        System.out.println("Creating new library...");
-        // bta.addLibrary();
+        bta.addLibrary("LibA");
+        updateLibraryList();
     }
 
     private void removeLibrary() {
-        System.out.println("Removing a library...");
-        // bta.removeLibrary();
+        bta.removeLibrary("LibA");
+        updateLibraryList();
     }
 
     private void viewStats() {
         System.out.println("Showing all statistics...");
-        // bta.getAverageDuration();
-        // bta.getAveragePageCount();
-        // bta.getAverageWordCount();
+        bta.getAverageDuration();
+        bta.getAveragePageCount();
+        bta.getAverageWordCount();
     }
 
     private void viewAllBooks() {
         System.out.println("Showing all books' info...");
-        // for (Library lib : bta.getLibraries()) {
-        // lib.getBookCollection();
-        // }
+        for (Library lib : bta.getLibraries()) {
+            lib.getBookCollection();
+        }
     }
 
+    // REQUIRES: bta is not null, data folder exists
+    // EFFECTS: Saves the bta app data to an external file
     private void saveLibrary() {
         Writer writer = new Writer(filePath);
 
@@ -230,6 +267,9 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
+    // REQUIRES: data folder exists
+    // MODIFIES: bta
+    // EFFECTS: Reads in the book tracker app data from an external file
     private LibraryApp loadLibrary() {
         Reader reader = new Reader(filePath);
 
@@ -245,5 +285,24 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
 
         return bta;
+    }
+
+    private void openLibrary() {
+        for (Library lib : bta.getLibraries()) {
+            if (lib.getName().equals(libraryList.getSelectedValue())) {
+                System.out.println(lib.getName() + " was selected.");
+                return;
+            }
+        }
+
+        System.out.println("No library was selected.");
+    }
+
+    private void updateLibraryList() {
+        libraryListModel.clear();
+
+        for (Library lib : bta.getLibraries()) {
+            libraryListModel.addElement(lib.getName());
+        }
     }
 }
