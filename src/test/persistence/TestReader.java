@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import model.LibraryApp;
 import model.Library;
-import ui.BookTrackerApp;
 
 public class TestReader {
     @Test
@@ -24,7 +24,7 @@ public class TestReader {
     void testReaderNonExistentFile() {
         Reader reader = new Reader("./data/noSuchFile.json");
         try {
-            BookTrackerApp bta = reader.readFromFile();
+            LibraryApp bta = reader.readFromFile();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
@@ -35,7 +35,7 @@ public class TestReader {
     void testReaderEmptyWorkRoom() {
         Reader reader = new Reader("./data/testReaderEmptyBookTrackerApp.json");
         try {
-            BookTrackerApp bta = reader.readFromFile();
+            LibraryApp bta = reader.readFromFile();
             assertEquals(0, bta.getLibraries().size());
             assertEquals(new ArrayList<Library>(), bta.getLibraries());
         } catch (IOException e) {
@@ -47,7 +47,7 @@ public class TestReader {
     void testReaderGeneralWorkRoom() {
         Reader reader = new Reader("./data/testReaderGeneralWorkRoom.json");
         try {
-            BookTrackerApp bta = reader.readFromFile();
+            LibraryApp bta = reader.readFromFile();
 
             assertEquals(2, bta.getLibraries().size());
             assertEquals("LibA", bta.getLibraries().get(0).getName());

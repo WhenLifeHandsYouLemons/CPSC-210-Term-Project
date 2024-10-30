@@ -1,8 +1,10 @@
 package persistence;
 
 import org.json.JSONObject;
+
+import model.LibraryApp;
+
 import java.io.*;
-import ui.BookTrackerApp;
 
 public class Writer {
     private String filePath;
@@ -21,7 +23,7 @@ public class Writer {
     // MODIFIES: jsonObject
     // EFFECTS: Runs functions to convert the current program state to JSON and save
     // it to filePath
-    public void writeToFile(BookTrackerApp bookTrackerApp) throws FileNotFoundException {
+    public void writeToFile(LibraryApp bookTrackerApp) throws FileNotFoundException {
         this.jsonObject = bookTrackerApp.convertToJson();
         System.out.println(jsonObject.toString(4));
         String jsonString = convertToString();

@@ -1,4 +1,4 @@
-package ui;
+package model;
 
 import java.util.List;
 
@@ -7,17 +7,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import model.Book;
-import model.Library;
-
 // Stores a list of libraries, manages the libraries, and shows statistics on all
 //  books stored in every library.
-public class BookTrackerApp {
+public class LibraryApp {
     private List<Library> libraries;
 
     // MODIFIES: this
     // EFFECTS: Initialises an empty list of libraries
-    public BookTrackerApp() {
+    public LibraryApp() {
         libraries = new ArrayList<Library>();
     }
 

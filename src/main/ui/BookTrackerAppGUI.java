@@ -15,18 +15,19 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import model.LibraryApp;
 import model.Library;
 import persistence.Reader;
 import persistence.Writer;
 
 public class BookTrackerAppGUI extends JFrame implements ActionListener {
-    protected BookTrackerApp bta;
+    protected LibraryApp bta;
     private String filePath = "./data/bookTrackerAppData.json";
 
     public BookTrackerAppGUI() {
         super("Book Tracker App"); // Create the main app frame
 
-        bta = new BookTrackerApp();
+        bta = new LibraryApp();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set the program to exit when the close button is
                                                            // clicked
@@ -229,7 +230,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
-    private BookTrackerApp loadLibrary() {
+    private LibraryApp loadLibrary() {
         Reader reader = new Reader(filePath);
 
         try {

@@ -1,4 +1,4 @@
-package ui;
+package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -9,14 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.Book;
+import model.LibraryApp;
 import model.Library;
 
-public class TestBookTrackerApp {
-    private BookTrackerApp testBookTrackerApp;
+public class TestLibraryApp {
+    private LibraryApp testBookTrackerApp;
 
     @BeforeEach
     void runBefore() {
-        testBookTrackerApp = new BookTrackerApp();
+        testBookTrackerApp = new LibraryApp();
     }
 
     @Test

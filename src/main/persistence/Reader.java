@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 import org.json.JSONObject;
 
 import model.Book;
+import model.LibraryApp;
 import model.Library;
-import ui.BookTrackerApp;
 
 public class Reader {
     private String filePath;
@@ -25,7 +25,7 @@ public class Reader {
     // REQUIRES: filePath should not be empty
     // EFFECTS: Runs functions to read the file at filePath and convert the JSON to
     // a program state
-    public BookTrackerApp readFromFile() throws IOException {
+    public LibraryApp readFromFile() throws IOException {
         String jsonData = readFile(filePath);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBookTrackerApp(jsonObject);
@@ -44,8 +44,8 @@ public class Reader {
     }
 
     // EFFECTS: parses bookTrackerApp from JSON object and returns it
-    private BookTrackerApp parseBookTrackerApp(JSONObject jsonObject) {
-        BookTrackerApp bookTrackerApp = new BookTrackerApp();
+    private LibraryApp parseBookTrackerApp(JSONObject jsonObject) {
+        LibraryApp bookTrackerApp = new LibraryApp();
 
         for (Object libJson : jsonObject.getJSONArray("libraries")) {
             JSONObject lib = (JSONObject) libJson;

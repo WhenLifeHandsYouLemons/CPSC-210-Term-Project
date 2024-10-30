@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.Test;
 
 import model.Book;
+import model.LibraryApp;
 import model.Library;
-import ui.BookTrackerApp;
 
 public class TestWriter {
     @Test
@@ -38,7 +38,7 @@ public class TestWriter {
     @Test
     void testSaveToFileUnsuccessful() {
         try {
-            BookTrackerApp bta = new BookTrackerApp();
+            LibraryApp bta = new LibraryApp();
             Writer writer = new Writer("./data/my\0illegal:filename.json");
             writer.writeToFile(bta);
             fail("IOException was expected");
@@ -50,7 +50,7 @@ public class TestWriter {
     @Test
     void testWriterEmptyBookTrackerApp() {
         try {
-            BookTrackerApp bta = new BookTrackerApp();
+            LibraryApp bta = new LibraryApp();
             Writer writer = new Writer("./data/testWriterEmptyBookTrackerApp.json");
             writer.writeToFile(bta);
 
@@ -65,7 +65,7 @@ public class TestWriter {
     @Test
     void testWriterGeneralBookTrackerApp() {
         try {
-            BookTrackerApp bta = new BookTrackerApp();
+            LibraryApp bta = new LibraryApp();
 
             bta.addLibrary("LibA");
             bta.addLibrary("LibB");
