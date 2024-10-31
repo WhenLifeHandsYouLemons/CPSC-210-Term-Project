@@ -31,8 +31,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         bta = new LibraryApp();
 
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Set the program to exit when the close button is
-                                                           // clicked
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Set the program to exit when the close button is
+                                                        // clicked
         setSize(850, 600); // Set window size
         setLocationRelativeTo(null);
 
@@ -226,11 +226,6 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
-    private void createLibrary() {
-        bta.addLibrary("LibA");
-        updateLibraryList();
-    }
-
     private void removeLibrary() {
         bta.removeLibrary("LibA");
         updateLibraryList();
@@ -247,6 +242,28 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         System.out.println("Showing all books' info...");
         for (Library lib : bta.getLibraries()) {
             lib.getBookCollection();
+        }
+    }
+
+    private void openLibrary() {
+        for (Library lib : bta.getLibraries()) {
+            if (lib.getName().equals(libraryList.getSelectedValue())) {
+                System.out.println(lib.getName() + " was selected.");
+                return;
+            }
+        }
+
+        System.out.println("No library was selected.");
+    }
+
+    // REQUIRES: libraryListModel is not null
+    // MODIFIES: this
+    // EFFECTS: Refreshes the list of libraries currently created
+    private void updateLibraryList() {
+        libraryListModel.clear();
+
+        for (Library lib : bta.getLibraries()) {
+            libraryListModel.addElement(lib.getName());
         }
     }
 
@@ -287,22 +304,15 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         return bta;
     }
 
-    private void openLibrary() {
-        for (Library lib : bta.getLibraries()) {
-            if (lib.getName().equals(libraryList.getSelectedValue())) {
-                System.out.println(lib.getName() + " was selected.");
-                return;
-            }
+    // MODIFIES: bta
+    // EFFECTS: Asks for user input for the library name to create
+    private void createLibrary() {
+        String libraryNameInput = JOptionPane.showInputDialog(this, "What is the name of the library you want to create?", "Create a new library", JOptionPane.DEFAULT_OPTION);
+
+        if (libraryNameInput != null && libraryNameInput.length() >= 1) {
+            bta.addLibrary(libraryNameInput);
         }
 
-        System.out.println("No library was selected.");
-    }
-
-    private void updateLibraryList() {
-        libraryListModel.clear();
-
-        for (Library lib : bta.getLibraries()) {
-            libraryListModel.addElement(lib.getName());
-        }
+        updateLibraryList();
     }
 }
