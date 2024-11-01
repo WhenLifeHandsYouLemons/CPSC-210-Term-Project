@@ -226,11 +226,6 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
-    private void removeLibrary() {
-        bta.removeLibrary("LibA");
-        updateLibraryList();
-    }
-
     private void viewStats() {
         System.out.println("Showing all statistics...");
         bta.getAverageDuration();
@@ -307,10 +302,33 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     // MODIFIES: bta
     // EFFECTS: Asks for user input for the library name to create
     private void createLibrary() {
-        String libraryNameInput = JOptionPane.showInputDialog(this, "What is the name of the library you want to create?", "Create a new library", JOptionPane.DEFAULT_OPTION);
+        String libraryNameInput = JOptionPane.showInputDialog(this,
+                "What is the name of the library you want to create?", "Create a new library",
+                JOptionPane.DEFAULT_OPTION);
 
         if (libraryNameInput != null && libraryNameInput.length() >= 1) {
             bta.addLibrary(libraryNameInput);
+        }
+
+        updateLibraryList();
+    }
+
+    // REQUIRES: bta is not null
+    // MODIFIES: bta
+    // EFFECTS: Asks user to choose a library to delete and deletes the given
+    // library
+    private void removeLibrary() {
+        Object[] libraries = new Object[bta.getLibraries().size() + 1];
+        libraries[0] = "";
+        for (int i = 0; i < bta.getLibraries().size(); i++) {
+            libraries[i + 1] = bta.getLibraries().get(i).getName();
+        }
+
+        String libraryNameInput = (String) JOptionPane.showInputDialog(this, "What library do you want to delete?",
+                "Delete a library", JOptionPane.DEFAULT_OPTION, null, libraries, "");
+
+        if (libraryNameInput != null && libraryNameInput.length() >= 1) {
+            bta.removeLibrary(libraryNameInput);
         }
 
         updateLibraryList();
