@@ -20,6 +20,7 @@ import model.Library;
 import persistence.Reader;
 import persistence.Writer;
 
+// Creates the GUI interface for the BookTrackerApp
 public class BookTrackerAppGUI extends JFrame implements ActionListener {
     protected LibraryApp bta;
     private String filePath = "./data/bookTrackerAppData.json";
@@ -302,17 +303,19 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         }
     }
 
-    //// REQUIRES: bta is not null
-    //// EFFECTS: Creates a new window and passes the selected library information to it
+    // REQUIRES: bta is not null
+    // EFFECTS: Creates a new window and passes the selected library information to
+    // it
     private void openLibrary() {
         for (Library lib : bta.getLibraries()) {
             if (lib.getName().equals(libraryList.getSelectedValue())) {
-                System.out.println(lib.getName() + " was selected.");
+                LibraryWindow libraryWindow = new LibraryWindow(lib);
                 return;
             }
         }
 
-        System.out.println("No library was selected.");
+        JOptionPane.showMessageDialog(this, "No library is selected! Please select a library first.",
+                "Select a library", JOptionPane.ERROR_MESSAGE);
     }
 
     // REQUIRES: libraryListModel is not null

@@ -8,6 +8,7 @@ import java.util.List;
 import model.*;
 import persistence.*;
 
+// Creates the basic text (console) interface for the BookTrackerApp
 public class BookTrackerAppConsole {
     public BookTrackerAppConsole() {
         // Create scanner object for user input

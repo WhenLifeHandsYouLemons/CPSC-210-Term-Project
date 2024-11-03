@@ -9,6 +9,7 @@ import javax.swing.*;
 import model.Book;
 import model.Library;
 
+// Creates a basic window to display text
 public class TextWindow extends JFrame {
     // EFFECTS: Creates a text window that displays the reading statistics
     public TextWindow(String title, double pageCount, double wordCount, double duration) {
