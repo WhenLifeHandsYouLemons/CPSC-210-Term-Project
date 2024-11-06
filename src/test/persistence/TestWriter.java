@@ -71,9 +71,9 @@ public class TestWriter {
             bta.addLibrary("LibB");
             Library libA = bta.getLibraries().get(0);
             Library libB = bta.getLibraries().get(1);
-            Book bookA = new Book("BookA", 12, 34);
-            Book bookB = new Book("BookB", 56, 78);
-            Book bookC = new Book("BookC", 910, 1112);
+            Book bookA = new Book("BookA", 12, 3456, 78);
+            Book bookB = new Book("BookB", 910, 111213, 1415);
+            Book bookC = new Book("BookC", 1617, 181920, 2122);
             libA.addBookToHistory(bookA);
             libB.addBookToHistory(bookB);
             libB.addBookToHistory(bookC);

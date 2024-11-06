@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.Book;
-import model.LibraryApp;
-import model.Library;
-
 public class TestLibraryApp {
     private LibraryApp testBookTrackerApp;
 
@@ -83,12 +79,12 @@ public class TestLibraryApp {
         testBookTrackerApp.addLibrary("Library 2");
 
         Library library1 = testBookTrackerApp.findLibrary("Library 1");
-        Book testBook1 = new Book("Book 1", 100, 60);
+        Book testBook1 = new Book("Book 1", 100, 10000, 60);
         library1.addBookToHistory(testBook1);
 
         Library library2 = testBookTrackerApp.findLibrary("Library 2");
-        Book testBook2 = new Book("Book 2", 250, 100);
-        Book testBook3 = new Book("Book 3", 230, 120);
+        Book testBook2 = new Book("Book 2", 250, 5000, 100);
+        Book testBook3 = new Book("Book 3", 230, 34500, 120);
         library2.addBookToHistory(testBook2);
         library2.addBookToHistory(testBook3);
 
@@ -101,16 +97,16 @@ public class TestLibraryApp {
         testBookTrackerApp.addLibrary("Library 2");
 
         Library library1 = testBookTrackerApp.findLibrary("Library 1");
-        Book testBook1 = new Book("Book 1", 100, 60);
+        Book testBook1 = new Book("Book 1", 100, 10000, 60);
         library1.addBookToHistory(testBook1);
 
         Library library2 = testBookTrackerApp.findLibrary("Library 2");
-        Book testBook2 = new Book("Book 2", 250, 100);
-        Book testBook3 = new Book("Book 3", 230, 120);
+        Book testBook2 = new Book("Book 2", 250, 5000, 100);
+        Book testBook3 = new Book("Book 3", 230, 34500, 120);
         library2.addBookToHistory(testBook2);
         library2.addBookToHistory(testBook3);
 
-        assertEquals(0.0, testBookTrackerApp.getAverageWordCount());
+        assertEquals(16500.0, testBookTrackerApp.getAverageWordCount());
     }
 
     @Test
@@ -119,12 +115,12 @@ public class TestLibraryApp {
         testBookTrackerApp.addLibrary("Library 2");
 
         Library library1 = testBookTrackerApp.findLibrary("Library 1");
-        Book testBook1 = new Book("Book 1", 100, 60);
+        Book testBook1 = new Book("Book 1", 100, 10000, 60);
         library1.addBookToHistory(testBook1);
 
         Library library2 = testBookTrackerApp.findLibrary("Library 2");
-        Book testBook2 = new Book("Book 2", 250, 100);
-        Book testBook3 = new Book("Book 3", 230, 120);
+        Book testBook2 = new Book("Book 2", 250, 5000, 100);
+        Book testBook3 = new Book("Book 3", 230, 34500, 120);
         library2.addBookToHistory(testBook2);
         library2.addBookToHistory(testBook3);
 

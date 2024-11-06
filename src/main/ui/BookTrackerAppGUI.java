@@ -23,9 +23,12 @@ import persistence.Writer;
 // Creates the GUI interface for the BookTrackerApp
 public class BookTrackerAppGUI extends JFrame implements ActionListener {
     protected LibraryApp bta;
+
     private String filePath = "./data/bookTrackerAppData.json";
+
     private DefaultListModel<String> libraryListModel;
     private JList<String> libraryList;
+
     private JButton newLibraryButton;
     private JButton removeLibraryButton;
     private JButton viewStatsButton;
@@ -35,10 +38,17 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     private JButton openLibraryButton;
     private JButton exitButton;
 
+    private Color backgroundColor;
+    private Color defaultButtonColor;
+    private Color warningButtonColor;
+    private Color transparentColor;
+
     // EFFECTS: Creates a window to show the main app page, creates the
     // BookTrackerApp instance
     public BookTrackerAppGUI() {
         super("Book Tracker App"); // Create the main app frame
+
+        initialiseColors();
 
         bta = new LibraryApp();
 
@@ -69,11 +79,20 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         this.setVisible(true); // Runs the GUI to show up
     }
 
+    // MODIFIES: this
+    // EFFECTS: Initialises the default colours to be used across the app
+    private void initialiseColors() {
+        backgroundColor = new Color(100, 100, 100);
+        defaultButtonColor = new Color(200, 200, 200);
+        warningButtonColor = new Color(255, 50, 50);
+        transparentColor = new Color(0, 0, 0, 0);
+    }
+
     // EFFECTS: Creates all GUI elements for the title bar and returns the JPanel
     // object
     private JPanel createTitleSection() {
         JPanel titlePanel = new JPanel();
-        titlePanel.setBackground(new Color(255, 255, 255));
+        titlePanel.setBackground(transparentColor);
 
         // Title section
         JLabel titleText = new JLabel("Book Tracker App");
@@ -93,7 +112,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         JPanel firstColumnInfo = new JPanel();
         firstColumn
                 .setBorder(BorderFactory.createEmptyBorder(columnPadding, columnPadding, columnPadding, columnPadding));
-        firstColumn.setBackground(new Color(255, 0, 0));
+        firstColumn.setBackground(backgroundColor);
         firstColumnInfo.setBackground(null);
         firstColumn.setLayout(new GridLayout(1, 1));
         firstColumnInfo.setLayout(new GridLayout(3, 1, 0, 75));
@@ -101,19 +120,19 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         // New library button
         newLibraryButton = new JButton("New Library");
         newLibraryButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        newLibraryButton.setBackground(new Color(255, 255, 0));
+        newLibraryButton.setBackground(defaultButtonColor);
         firstColumnInfo.add(newLibraryButton);
 
         // View statistics button
         viewStatsButton = new JButton("View Statistics");
         viewStatsButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        viewStatsButton.setBackground(new Color(0, 255, 255));
+        viewStatsButton.setBackground(defaultButtonColor);
         firstColumnInfo.add(viewStatsButton);
 
         // Save library button
         saveLibraryButton = new JButton("Save Library");
         saveLibraryButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        saveLibraryButton.setBackground(new Color(255, 0, 255));
+        saveLibraryButton.setBackground(defaultButtonColor);
         firstColumnInfo.add(saveLibraryButton);
 
         firstColumn.add(firstColumnInfo);
@@ -130,7 +149,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         JPanel secondColumnInfo = new JPanel();
         secondColumn
                 .setBorder(BorderFactory.createEmptyBorder(columnPadding, columnPadding, columnPadding, columnPadding));
-        secondColumn.setBackground(new Color(0, 255, 0));
+        secondColumn.setBackground(backgroundColor);
         secondColumnInfo.setBackground(null);
         secondColumn.setLayout(new GridLayout(1, 1));
         secondColumnInfo.setLayout(new GridLayout(3, 1, 0, 75));
@@ -138,19 +157,19 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         // Remove library button
         removeLibraryButton = new JButton("Remove Library");
         removeLibraryButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        removeLibraryButton.setBackground(new Color(0, 255, 255));
+        removeLibraryButton.setBackground(defaultButtonColor);
         secondColumnInfo.add(removeLibraryButton);
 
         // View all books button
         viewAllBooksButton = new JButton("View All Books");
         viewAllBooksButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        viewAllBooksButton.setBackground(new Color(255, 0, 255));
+        viewAllBooksButton.setBackground(defaultButtonColor);
         secondColumnInfo.add(viewAllBooksButton);
 
         // Load library button
         loadLibraryButton = new JButton("Load Library");
         loadLibraryButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        loadLibraryButton.setBackground(new Color(255, 255, 0));
+        loadLibraryButton.setBackground(defaultButtonColor);
         secondColumnInfo.add(loadLibraryButton);
 
         secondColumn.add(secondColumnInfo);
@@ -167,7 +186,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         JPanel thirdColumnInfo = new JPanel();
         thirdColumn.setBorder(
                 BorderFactory.createEmptyBorder(columnPadding, columnPadding / 2, columnPadding, columnPadding / 2));
-        thirdColumn.setBackground(new Color(0, 0, 255));
+        thirdColumn.setBackground(backgroundColor);
         thirdColumnInfo.setBackground(null);
         thirdColumn.setLayout(new GridLayout(1, 1));
         GridBagLayout columnGridBagLayout = new GridBagLayout();
@@ -184,8 +203,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         // Exit button
         exitButton = new JButton("Exit");
-        exitButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        exitButton.setBackground(new Color(255, 255, 0));
+        exitButton.setFont(new Font("SansSerif", Font.BOLD, 18));
+        exitButton.setBackground(warningButtonColor);
         columnGridBagConstraints.weighty = 0.15;
         columnGridBagConstraints.gridy = 2;
         columnGridBagConstraints.fill = GridBagConstraints.BOTH;
@@ -207,7 +226,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         GridBagConstraints viewLibraryGridBagConstraints = createGridBagConstraints();
 
         viewLibraryPanel.setLayout(viewLibraryGridBagLayout);
-        viewLibraryPanel.setBackground(new Color(0, 255, 0));
+        viewLibraryPanel.setBackground(backgroundColor);
         columnGridBagConstraints.weighty = 0.6;
 
         // Library list section
@@ -225,7 +244,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         // Open library button
         openLibraryButton = new JButton("Open selected library");
-        openLibraryButton.setBackground(new Color(200, 55, 100));
+        openLibraryButton.setBackground(defaultButtonColor);
+        openLibraryButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
         viewLibraryGridBagConstraints.weighty = 0.1;
         viewLibraryGridBagConstraints.gridy = 1;
         viewLibraryPanel.add(openLibraryButton, viewLibraryGridBagConstraints);
@@ -244,11 +264,12 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         return constraints;
     }
 
-    // REQUIERS: columnGridBagConstraints is not null
+    // REQUIRES: columnGridBagConstraints is not null
     // MODIFIES: columnGridBagConstraints
     // EFFECTS: Creates the GUI elements for the spacer panel
     private JPanel createSpacers(GridBagConstraints columnGridBagConstraints) {
         JPanel spacerPanel = new JPanel();
+        spacerPanel.setBackground(transparentColor);
         columnGridBagConstraints.weighty = 0.15;
         columnGridBagConstraints.gridy = 1;
         columnGridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
@@ -309,7 +330,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     private void openLibrary() {
         for (Library lib : bta.getLibraries()) {
             if (lib.getName().equals(libraryList.getSelectedValue())) {
-                LibraryWindow libraryWindow = new LibraryWindow(lib);
+                new LibraryWindow(lib);
                 return;
             }
         }
@@ -407,13 +428,13 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     // REQUIRES: bta is not null
     // EFFECTS: Opens a new window to display the user's reading statistics
     private void viewStats() {
-        TextWindow statsTextWindow = new TextWindow("Total reading statistics", bta.getAveragePageCount(),
+        new TextWindow("Total reading statistics", bta.getAveragePageCount(),
                 bta.getAverageWordCount(), bta.getAverageDuration());
     }
 
     // REQUIRES: bta is not null
     // EFFECTS: Creates a window to show all books tracked
     private void viewAllBooks() {
-        TextWindow allBookInfoTextWindow = new TextWindow(bta.getLibraries());
+        new TextWindow(bta.getLibraries());
     }
 }

@@ -15,9 +15,9 @@ public class TestLibrary {
     @BeforeEach
     void runBefore() {
         testLibrary = new Library("Library 1");
-        testBook1 = new Book("Book 1", 100, 60);
-        testBook2 = new Book("Book 2", 250, 100);
-        testBook3 = new Book("Book 3", 230, 120);
+        testBook1 = new Book("Book 1", 100, 500, 60);
+        testBook2 = new Book("Book 2", 250, 2500, 100);
+        testBook3 = new Book("Book 3", 230, 6900, 120);
     }
 
     @Test
@@ -103,15 +103,15 @@ public class TestLibrary {
     void testAverageWordCount() {
         testLibrary.addBookToHistory(testBook1);
 
-        assertEquals(0.0, testLibrary.getAverageWordCount());
+        assertEquals(500.0, testLibrary.getAverageWordCount());
 
         testLibrary.addBookToHistory(testBook2);
 
-        assertEquals(0.0, testLibrary.getAverageWordCount());
+        assertEquals(1500.0, testLibrary.getAverageWordCount());
 
         testLibrary.addBookToHistory(testBook3);
 
-        assertEquals(0.0, testLibrary.getAverageWordCount());
+        assertEquals(3300.0, testLibrary.getAverageWordCount());
     }
 
     @Test

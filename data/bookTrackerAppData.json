@@ -2,26 +2,26 @@
     {
         "libraryName": "LibA",
         "bookCollection": [{
-            "duration": 34,
-            "pageCount": 12,
-            "wordCount": 0,
-            "name": "BookA"
+            "duration": 60,
+            "pageCount": 100,
+            "wordCount": 10000,
+            "name": "Book 1"
         }]
     },
     {
         "libraryName": "LibB",
         "bookCollection": [
             {
-                "duration": 78,
-                "pageCount": 56,
-                "wordCount": 0,
-                "name": "BookB"
+                "duration": 100,
+                "pageCount": 250,
+                "wordCount": 5000,
+                "name": "Book 2"
             },
             {
-                "duration": 1112,
-                "pageCount": 910,
-                "wordCount": 0,
-                "name": "BookC"
+                "duration": 120,
+                "pageCount": 230,
+                "wordCount": 34500,
+                "name": "Book 3"
             }
         ]
     }

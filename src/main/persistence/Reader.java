@@ -64,7 +64,7 @@ public class Reader {
 
                 Library library = bookTrackerApp.getLibraries().get(bookTrackerApp.getLibraries().size() - 1);
 
-                library.addBookToHistory(new Book(bookName, pageCount, duration));
+                library.addBookToHistory(new Book(bookName, pageCount, wordCount, duration));
             }
         }
 

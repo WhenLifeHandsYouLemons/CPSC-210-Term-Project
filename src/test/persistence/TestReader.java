@@ -24,7 +24,7 @@ public class TestReader {
     void testReaderNonExistentFile() {
         Reader reader = new Reader("./data/noSuchFile.json");
         try {
-            LibraryApp bta = reader.readFromFile();
+            reader.readFromFile();
             fail("IOException expected");
         } catch (IOException e) {
             // pass

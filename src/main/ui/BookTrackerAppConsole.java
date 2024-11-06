@@ -242,11 +242,13 @@ public class BookTrackerAppConsole {
             String bookName = scanner.nextLine();
             System.out.print("Enter the number of pages: ");
             int pageCount = scanner.nextInt();
+            System.out.print("Enter the number of words (estimate using: words_per_page * no_of_pages): ");
+            int wordCount = scanner.nextInt();
             System.out.print("Enter the time taken to read the book (in whole minutes): ");
             int readingDuration = scanner.nextInt();
 
-            if (bookName != "" && pageCount > 0 && readingDuration > 0) {
-                Book newBook = new Book(bookName, pageCount, readingDuration);
+            if (bookName != "" && pageCount > 0 && wordCount > 0 && readingDuration > 0) {
+                Book newBook = new Book(bookName, pageCount, wordCount, readingDuration);
                 selectedLibrary.addBookToHistory(newBook);
 
                 System.out.print("Added '");

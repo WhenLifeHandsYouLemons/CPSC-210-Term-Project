@@ -2,9 +2,9 @@
     {
         "libraryName": "LibA",
         "bookCollection": [{
-            "duration": 34,
+            "duration": 78,
             "pageCount": 12,
-            "wordCount": 0,
+            "wordCount": 3456,
             "name": "BookA"
         }]
     },
@@ -12,15 +12,15 @@
         "libraryName": "LibB",
         "bookCollection": [
             {
-                "duration": 78,
-                "pageCount": 56,
-                "wordCount": 0,
+                "duration": 1415,
+                "pageCount": 910,
+                "wordCount": 111213,
                 "name": "BookB"
             },
             {
-                "duration": 1112,
-                "pageCount": 910,
-                "wordCount": 0,
+                "duration": 2122,
+                "pageCount": 1617,
+                "wordCount": 181920,
                 "name": "BookC"
             }
         ]

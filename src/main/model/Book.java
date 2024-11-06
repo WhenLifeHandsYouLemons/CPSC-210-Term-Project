@@ -9,13 +9,14 @@ public class Book {
     private int wordCount;
     private int duration;
 
-    // REQUIRES: name is not empty and pageCount > 0 and duration > 0
+    // REQUIRES: name is not empty, pageCount > 0, wordCount > 0, and duration > 0
     // MODIFIES: this
-    // EFFECTS: Instantiates a new Book with the given name, pageCount, and duration
-    // (in minutes)
-    public Book(String name, int pageCount, int duration) {
+    // EFFECTS: Instantiates a new Book with the given name, pageCount, wordCount,
+    // and duration (in minutes)
+    public Book(String name, int pageCount, int wordCount, int duration) {
         this.name = name;
         this.pageCount = pageCount;
+        this.wordCount = wordCount;
         this.duration = duration;
     }
 
