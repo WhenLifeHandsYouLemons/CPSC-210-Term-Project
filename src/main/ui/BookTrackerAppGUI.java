@@ -399,6 +399,9 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         if (libraryNameInput != null && libraryNameInput.length() >= 1) {
             bta.addLibrary(libraryNameInput);
+        } else {
+            JOptionPane.showMessageDialog(this, "Unable to create the library! Please try again.",
+                    "Unable to create library", JOptionPane.ERROR_MESSAGE);
         }
 
         updateLibraryList();

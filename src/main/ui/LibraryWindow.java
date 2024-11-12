@@ -236,27 +236,27 @@ public class LibraryWindow extends JFrame implements ActionListener {
     // MODIFIES: this
     // EFFECTS: Asks for user input for the book name to create
     private void createBook() {
-        String bookNameInput = JOptionPane.showInputDialog(this,
-                "What's the name of the book you want to add?", "Add a new book",
-                JOptionPane.DEFAULT_OPTION);
-        String pageCountInput = JOptionPane.showInputDialog(this,
-                "What's the page count of the book?", "Add a new book",
-                JOptionPane.DEFAULT_OPTION);
-        String wordCountInput = JOptionPane.showInputDialog(this,
-                "What's the word count of the book?", "Add a new book",
-                JOptionPane.DEFAULT_OPTION);
-        String durationInput = JOptionPane.showInputDialog(this,
-                "How long did you take to finish the book?", "Add a new book",
-                JOptionPane.DEFAULT_OPTION);
-
+        String bookNameInput = JOptionPane.showInputDialog(this, "What's the name of the book you want to add?",
+                "Add a new book", JOptionPane.DEFAULT_OPTION);
         try {
             if (bookNameInput != null && bookNameInput.length() >= 1) {
+                String pageCountInput = JOptionPane.showInputDialog(this,
+                        "What's the page count of " + bookNameInput + "?", "Add a new book",
+                        JOptionPane.DEFAULT_OPTION);
+                String wordCountInput = JOptionPane.showInputDialog(this,
+                        "What's the word count of " + bookNameInput + "?", "Add a new book",
+                        JOptionPane.DEFAULT_OPTION);
+                String durationInput = JOptionPane.showInputDialog(this,
+                        "How long did you take to finish " + bookNameInput + "?", "Add a new book",
+                        JOptionPane.DEFAULT_OPTION);
+
                 library.addBookToHistory(new Book(bookNameInput, Integer.parseInt(pageCountInput),
                         Integer.parseInt(wordCountInput), Integer.parseInt(durationInput)));
+            } else if (bookNameInput != null) {
+                throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Unable to add the book to the current library! Please try again.",
+            JOptionPane.showMessageDialog(this, "Unable to add the book to the current library! Please try again.",
                     "Unable to add book", JOptionPane.ERROR_MESSAGE);
         }
     }

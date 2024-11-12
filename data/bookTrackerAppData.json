@@ -1,27 +1,153 @@
 {"libraries": [
     {
-        "libraryName": "LibA",
-        "bookCollection": [{
-            "duration": 60,
-            "pageCount": 100,
-            "wordCount": 10000,
-            "name": "Book 1"
-        }]
+        "libraryName": "Harry Potter Series",
+        "bookCollection": [
+            {
+                "duration": 176,
+                "pageCount": 333,
+                "wordCount": 76944,
+                "name": "Harry Potter and the Sorcerer's Stone"
+            },
+            {
+                "duration": 140,
+                "pageCount": 352,
+                "wordCount": 85141,
+                "name": "Harry Potter and the Chamber of Secrets"
+            },
+            {
+                "duration": 170,
+                "pageCount": 435,
+                "wordCount": 107253,
+                "name": "Harry Potter and the Prisoner of Azkaban"
+            },
+            {
+                "duration": 216,
+                "pageCount": 734,
+                "wordCount": 190637,
+                "name": "Harry Potter and the Goblet of Fire"
+            },
+            {
+                "duration": 233,
+                "pageCount": 870,
+                "wordCount": 257045,
+                "name": "Harry Potter and the Order of the Phoenix"
+            },
+            {
+                "duration": 146,
+                "pageCount": 652,
+                "wordCount": 168923,
+                "name": "Harry Potter and the Half-Blood Prince"
+            },
+            {
+                "duration": 167,
+                "pageCount": 759,
+                "wordCount": 198227,
+                "name": "Harry Potter and the Deathly Hallows"
+            }
+        ]
     },
     {
-        "libraryName": "LibB",
+        "libraryName": "Percy Jackson & The Olympians Series",
         "bookCollection": [
             {
                 "duration": 100,
-                "pageCount": 250,
-                "wordCount": 5000,
-                "name": "Book 2"
+                "pageCount": 377,
+                "wordCount": 87223,
+                "name": "The Lightning Thief"
             },
             {
-                "duration": 120,
-                "pageCount": 230,
-                "wordCount": 34500,
-                "name": "Book 3"
+                "duration": 80,
+                "pageCount": 279,
+                "wordCount": 63976,
+                "name": "The Sea of Monsters"
+            },
+            {
+                "duration": 60,
+                "pageCount": 213,
+                "wordCount": 72995,
+                "name": "The Titan's Curse"
+            },
+            {
+                "duration": 98,
+                "pageCount": 361,
+                "wordCount": 85079,
+                "name": "The Battle Of The Labyrinth"
+            },
+            {
+                "duration": 123,
+                "pageCount": 381,
+                "wordCount": 89002,
+                "name": "The Last Olympian"
+            },
+            {
+                "duration": 34,
+                "pageCount": 151,
+                "wordCount": 23809,
+                "name": "The Demigod Files"
+            },
+            {
+                "duration": 58,
+                "pageCount": 224,
+                "wordCount": 46958,
+                "name": "The Demigod Diaries"
+            }
+        ]
+    },
+    {
+        "libraryName": "The Heroes of Olympus Series",
+        "bookCollection": [
+            {
+                "duration": 178,
+                "pageCount": 557,
+                "wordCount": 144000,
+                "name": "The Lost Hero"
+            },
+            {
+                "duration": 150,
+                "pageCount": 513,
+                "wordCount": 117675,
+                "name": "The Son of Neptune"
+            },
+            {
+                "duration": 165,
+                "pageCount": 586,
+                "wordCount": 132818,
+                "name": "The Mark of Athena"
+            },
+            {
+                "duration": 155,
+                "pageCount": 597,
+                "wordCount": 129725,
+                "name": "The House of Hades"
+            },
+            {
+                "duration": 96,
+                "pageCount": 516,
+                "wordCount": 111748,
+                "name": "The Blood of Olympus"
+            }
+        ]
+    },
+    {
+        "libraryName": "The Kane Chronicles Series",
+        "bookCollection": [
+            {
+                "duration": 143,
+                "pageCount": 516,
+                "wordCount": 124305,
+                "name": "The Red Pyramid"
+            },
+            {
+                "duration": 129,
+                "pageCount": 452,
+                "wordCount": 113038,
+                "name": "The Throne of Fire"
+            },
+            {
+                "duration": 102,
+                "pageCount": 406,
+                "wordCount": 98599,
+                "name": "The Serpent's Shadow"
             }
         ]
     }

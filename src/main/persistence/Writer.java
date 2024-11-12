@@ -25,7 +25,6 @@ public class Writer {
     // it to filePath
     public void writeToFile(LibraryApp bookTrackerApp) throws FileNotFoundException {
         this.jsonObject = bookTrackerApp.convertToJson();
-        System.out.println(jsonObject.toString(4));
         String jsonString = convertToString();
         saveToFile(jsonString);
     }
