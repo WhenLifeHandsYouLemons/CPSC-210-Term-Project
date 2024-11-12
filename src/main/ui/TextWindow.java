@@ -61,6 +61,27 @@ public class TextWindow extends JFrame {
 
     // EFFECTS: Creates a text window that displays all the books tracked in the app
     public TextWindow(Library library) {
+        super("Books tracked in " + library.getName());
+
+        setSize(500, 600);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        String fullText = "";
+        for (String t : getAllBooks(library)) {
+            fullText += t;
+        }
+
+        JTextArea textArea = new JTextArea(fullText);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+
+        textArea.setEditable(false);
+        textArea.setHighlighter(null);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 18));
+
+        this.add(scrollPane);
+
+        setVisible(true);
     }
 
     // EFFECTS: Goes through the list of libraries and creates a list of strings to
@@ -98,6 +119,31 @@ public class TextWindow extends JFrame {
 
     // EFFECTS: Goes through the library and creates a list of strings to be joined
     private List<String> getAllBooks(Library library) {
-        return null; // stub
+        List<String> text = new ArrayList<String>();
+
+        text.add(" All books in " + library.getName() + ":\n");
+        int index = 1;
+
+        for (Book book : library.getBookCollection()) {
+            text.add("\n");
+            text.add(" " + index + "");
+            text.add(". ");
+            text.add(book.getName());
+            text.add("\n");
+            text.add("     Page count: ");
+            text.add(book.getPageCount() + "");
+            text.add("\n");
+            text.add("     Word count: ");
+            text.add(book.getWordCount() + "");
+            text.add("\n");
+            text.add("     Reading duration (minutes): ");
+            text.add(book.getDuration() + "");
+
+            index++;
+        }
+
+        text.add(" ");
+
+        return text;
     }
 }
