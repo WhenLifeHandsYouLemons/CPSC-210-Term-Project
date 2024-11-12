@@ -1,4 +1,5 @@
 // Taken from: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 package persistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
