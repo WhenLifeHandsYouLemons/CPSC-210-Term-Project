@@ -59,6 +59,10 @@ public class TextWindow extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: Creates a text window that displays all the books tracked in the app
+    public TextWindow(Library library) {
+    }
+
     // EFFECTS: Goes through the list of libraries and creates a list of strings to
     // be joined
     private List<String> getAllBooks(List<Library> libraries) {
@@ -90,5 +94,10 @@ public class TextWindow extends JFrame {
         text.add(" ");
 
         return text;
+    }
+
+    // EFFECTS: Goes through the library and creates a list of strings to be joined
+    private List<String> getAllBooks(Library library) {
+        return null; // stub
     }
 }

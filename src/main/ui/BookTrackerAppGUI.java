@@ -31,7 +31,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
     private JButton newLibraryButton;
     private JButton removeLibraryButton;
-    private JButton viewStatsButton;
+    private JButton viewAllStatsButton;
     private JButton viewAllBooksButton;
     private JButton saveLibraryButton;
     private JButton loadLibraryButton;
@@ -103,7 +103,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         return titlePanel;
     }
 
-    // REQUIRES: columnPadding > 1
+    // REQUIRES: columnPadding > 0
     // MODIFIES: this
     // EFFECTS: Creates all GUI elements for the first column and returns the first
     // column section
@@ -124,10 +124,10 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         firstColumnInfo.add(newLibraryButton);
 
         // View statistics button
-        viewStatsButton = new JButton("View Statistics");
-        viewStatsButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        viewStatsButton.setBackground(defaultButtonColor);
-        firstColumnInfo.add(viewStatsButton);
+        viewAllStatsButton = new JButton("View Statistics");
+        viewAllStatsButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        viewAllStatsButton.setBackground(defaultButtonColor);
+        firstColumnInfo.add(viewAllStatsButton);
 
         // Save library button
         saveLibraryButton = new JButton("Save Library");
@@ -140,7 +140,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         return firstColumn;
     }
 
-    // REQUIRES: columnPadding > 1
+    // REQUIRES: columnPadding > 0
     // MODIFIES: this
     // EFFECTS: Creates all GUI elements for the second column and returns the
     // second column section
@@ -177,7 +177,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         return secondColumn;
     }
 
-    // REQUIRES: columnPadding > 1
+    // REQUIRES: columnPadding > 0
     // MODIFIES: this
     // EFFECTS: Creates all GUI elements for the third column and returns the third
     // column section
@@ -283,7 +283,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     private void setButtonFunctionality() {
         newLibraryButton.setActionCommand("new library");
         removeLibraryButton.setActionCommand("remove library");
-        viewStatsButton.setActionCommand("view stats");
+        viewAllStatsButton.setActionCommand("view all stats");
         viewAllBooksButton.setActionCommand("view all books");
         saveLibraryButton.setActionCommand("save library");
         loadLibraryButton.setActionCommand("load library");
@@ -291,7 +291,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         exitButton.setActionCommand("exit");
 
         newLibraryButton.addActionListener(this);
-        viewStatsButton.addActionListener(this);
+        viewAllStatsButton.addActionListener(this);
         saveLibraryButton.addActionListener(this);
         removeLibraryButton.addActionListener(this);
         viewAllBooksButton.addActionListener(this);
@@ -309,8 +309,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
             createLibrary();
         } else if ("remove library".equals(e.getActionCommand())) {
             removeLibrary();
-        } else if ("view stats".equals(e.getActionCommand())) {
-            viewStats();
+        } else if ("view all stats".equals(e.getActionCommand())) {
+            viewAllStats();
         } else if ("view all books".equals(e.getActionCommand())) {
             viewAllBooks();
         } else if ("save library".equals(e.getActionCommand())) {
@@ -394,7 +394,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     // EFFECTS: Asks for user input for the library name to create
     private void createLibrary() {
         String libraryNameInput = JOptionPane.showInputDialog(this,
-                "What is the name of the library you want to create?", "Create a new library",
+                "What's the name of the library you want to create?", "Create a new library",
                 JOptionPane.DEFAULT_OPTION);
 
         if (libraryNameInput != null && libraryNameInput.length() >= 1) {
@@ -427,7 +427,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
     // REQUIRES: bta is not null
     // EFFECTS: Opens a new window to display the user's reading statistics
-    private void viewStats() {
+    private void viewAllStats() {
         new TextWindow("Total reading statistics", bta.getAveragePageCount(),
                 bta.getAverageWordCount(), bta.getAverageDuration());
     }
