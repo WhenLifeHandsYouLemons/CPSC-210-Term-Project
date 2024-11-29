@@ -57,3 +57,26 @@ I think that my target audience would be mostly people who enjoy reading books a
 
     1. Run the application.
     2. Click the "**Load Library**" button at the bottom of the screen.
+
+# Phase 4: Task 2
+
+```txt
+Wed Nov 27 11:26:01 PST 2024
+Created a new library
+Wed Nov 27 11:26:08 PST 2024
+Added a book to a library
+Wed Nov 27 11:26:12 PST 2024
+Created a new library
+Wed Nov 27 11:26:21 PST 2024
+Added a book to a library
+Wed Nov 27 11:26:25 PST 2024
+Added a book to a library
+Wed Nov 27 11:26:30 PST 2024
+Created a new library
+Wed Nov 27 11:26:38 PST 2024
+Added a book to a library
+Wed Nov 27 11:26:47 PST 2024
+Removed a library
+Wed Nov 27 11:26:54 PST 2024
+Removed a book from a library
+```
