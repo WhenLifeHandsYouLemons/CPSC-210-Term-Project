@@ -14,6 +14,7 @@ import model.Library;
 
 public class Reader {
     private String filePath;
+    private LibraryApp bta;
 
     // REQUIRES: filePath is not empty
     // EFFECTS: Instantiates the Reader object and sets the read source path to the
@@ -45,14 +46,14 @@ public class Reader {
 
     // EFFECTS: parses bookTrackerApp from JSON object and returns it
     private LibraryApp parseBookTrackerApp(JSONObject jsonObject) {
-        LibraryApp bookTrackerApp = new LibraryApp();
+        bta = new LibraryApp();
 
         for (Object libJson : jsonObject.getJSONArray("libraries")) {
             JSONObject lib = (JSONObject) libJson;
 
             String name = lib.getString("libraryName");
 
-            bookTrackerApp.addLibrary(name);
+            bta.addLibrary(name);
 
             for (Object bookJson : lib.getJSONArray("bookCollection")) {
                 JSONObject book = (JSONObject) bookJson;
@@ -62,13 +63,13 @@ public class Reader {
                 int wordCount = book.getInt("wordCount");
                 int duration = book.getInt("duration");
 
-                Library library = bookTrackerApp.getLibraries().get(bookTrackerApp.getLibraries().size() - 1);
+                Library library = bta.getLibraries().get(bta.getLibraries().size() - 1);
 
                 library.addBookToHistory(new Book(bookName, pageCount, wordCount, duration));
             }
         }
 
-        return bookTrackerApp;
+        return bta;
     }
 
     public String getFilePath() {

@@ -28,6 +28,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener, WindowL
     protected LibraryApp bta;
 
     private String filePath = "./data/bookTrackerAppData.json";
+    private Reader reader;
+    private Writer writer;
 
     private DefaultListModel<String> libraryListModel;
     private JList<String> libraryList;
@@ -359,7 +361,9 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener, WindowL
     // REQUIRES: bta is not null, data folder exists
     // EFFECTS: Saves the bta app data to an external file
     private void saveLibrary() {
-        Writer writer = new Writer(filePath);
+        if (writer == null) {
+            writer = new Writer(filePath);
+        }
 
         try {
             writer.writeToFile(bta);
@@ -380,7 +384,9 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener, WindowL
     // MODIFIES: this
     // EFFECTS: Reads in the book tracker app data from an external file
     private void loadLibrary() {
-        Reader reader = new Reader(filePath);
+        if (reader == null) {
+            reader = new Reader(filePath);
+        }
 
         try {
             bta = reader.readFromFile();
