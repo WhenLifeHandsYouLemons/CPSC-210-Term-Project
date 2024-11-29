@@ -10,6 +10,9 @@ import persistence.*;
 
 // Creates the basic text (console) interface for the BookTrackerApp
 public class BookTrackerAppConsole {
+    private Writer writer;
+    private Reader reader;
+
     public BookTrackerAppConsole() {
         // Create scanner object for user input
         Scanner scanner = new Scanner(System.in);
@@ -20,11 +23,11 @@ public class BookTrackerAppConsole {
 
         // Create serialiser instances for save/load features
         String filePath = "./data/bookTrackerAppData.json";
-        Writer writer = new Writer(filePath);
-        Reader reader = new Reader(filePath);
+        writer = new Writer(filePath);
+        reader = new Reader(filePath);
 
         // Run main program
-        homePage(bookTrackerApp, scanner, option, writer, reader);
+        homePage(bookTrackerApp, scanner, option);
 
         // Close scanner to stop memory leaks
         scanner.close();
@@ -33,8 +36,7 @@ public class BookTrackerAppConsole {
     // MODIFIES: bookTrackerApp, option, writer, reader
     // EFFECTS: Prints out available user options and asks for user input until
     // "exit" is typed
-    private static void homePage(LibraryApp bookTrackerApp, Scanner scanner, String option, Writer writer,
-            Reader reader) {
+    private void homePage(LibraryApp bookTrackerApp, Scanner scanner, String option) {
         do {
             printHomeHelpMessage();
 
@@ -50,16 +52,16 @@ public class BookTrackerAppConsole {
             } else if (option.equals("remove library")) {
                 removeLibraryOption(bookTrackerApp, scanner);
             } else if (option.equals("save library")) {
-                saveLibraryOption(writer, bookTrackerApp);
+                saveLibraryOption(bookTrackerApp);
             } else if (option.equals("load library")) {
-                bookTrackerApp = loadLibraryOption(reader, bookTrackerApp);
+                bookTrackerApp = loadLibraryOption(bookTrackerApp);
             }
         } while (!option.equals("exit"));
     }
 
     // MODIFIES: writer
     // EFFECTS: Saves all the data currently stored in bookTrackerApp to a JSON file
-    private static void saveLibraryOption(Writer writer, LibraryApp bookTrackerApp) {
+    private void saveLibraryOption(LibraryApp bookTrackerApp) {
         try {
             writer.writeToFile(bookTrackerApp);
             System.out.println("Saved libraries to '" + writer.getFilePath() + "'!");
@@ -71,7 +73,7 @@ public class BookTrackerAppConsole {
     // MODIFIES: bookTrackerApp
     // EFFECTS: Reads app data from a JSON file into the given bookTrackerApp
     // instance
-    private static LibraryApp loadLibraryOption(Reader reader, LibraryApp bookTrackerApp) {
+    private LibraryApp loadLibraryOption(LibraryApp bookTrackerApp) {
         try {
             bookTrackerApp = reader.readFromFile();
             System.out.println("Loaded libraries from '" + reader.getFilePath() + "'!");
@@ -83,7 +85,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out the options available to the user on the home page
-    private static void printHomeHelpMessage() {
+    private void printHomeHelpMessage() {
         System.out.println("\n----------------------------------------------------------");
         System.out.println("Choose one of the following options:\n");
         System.out.println("'new library' - Adds a new library");
@@ -98,7 +100,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out the options available to the user inside a library
-    private static void printLibraryHelpMessage(Library selectedLibrary) {
+    private void printLibraryHelpMessage(Library selectedLibrary) {
         System.out.println("\n----------------------------------------------------------");
         System.out.println(selectedLibrary.getName());
         System.out.println("Choose one of the following options:\n");
@@ -117,7 +119,7 @@ public class BookTrackerAppConsole {
     // MODIFIES: bookTrackerApp
     // EFFECTS: Prints out all libraries available, asks for a library's name, and
     // opens that library
-    private static void removeLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
+    private void removeLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
         System.out.println("Libraries available:");
         for (Library library : bookTrackerApp.getLibraries()) {
             System.out.print("- ");
@@ -151,7 +153,7 @@ public class BookTrackerAppConsole {
 
     // MODIFIES: bookTrackerApp
     // EFFECTS: Asks for the name of the new library and creates it
-    private static void newLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
+    private void newLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
         System.out.print("\nEnter the name of the library to be created: ");
 
         // Ask for library name input
@@ -165,7 +167,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out information on all books that have been tracked
-    private static void viewAllBooksOption(LibraryApp bookTrackerApp) {
+    private void viewAllBooksOption(LibraryApp bookTrackerApp) {
         int index = 1;
 
         System.out.println("\n------------------------------------------------");
@@ -189,7 +191,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out overall statistics for all books
-    private static void viewStatisticsOption(LibraryApp bookTrackerApp) {
+    private void viewStatisticsOption(LibraryApp bookTrackerApp) {
         System.out.println("\n------------------------------------------------");
         System.out.println("All Statistics:\n");
         System.out.print("Average book length (in pages): ");
@@ -203,7 +205,7 @@ public class BookTrackerAppConsole {
 
     // EFFECTS: Prints out all libraries available, asks for the name of a library
     // and opens it
-    private static void viewLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
+    private void viewLibraryOption(LibraryApp bookTrackerApp, Scanner scanner) {
         listAllLibraries(bookTrackerApp);
 
         System.out.print("Enter the name of the library you want to open: ");
@@ -223,7 +225,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out all available libraries
-    private static void listAllLibraries(LibraryApp bookTrackerApp) {
+    private void listAllLibraries(LibraryApp bookTrackerApp) {
         System.out.println("\nLibraries available:");
         List<Library> libraries = bookTrackerApp.getLibraries();
         for (Library library : libraries) {
@@ -236,7 +238,7 @@ public class BookTrackerAppConsole {
     // MODIFIES: selectedLibrary
     // EFFECTS: Asks for the information about a book and adds it to the selected
     // library
-    private static void addBookOption(Library selectedLibrary, Scanner scanner) {
+    private void addBookOption(Library selectedLibrary, Scanner scanner) {
         try {
             System.out.print("Enter the name of the book: ");
             String bookName = scanner.nextLine();
@@ -263,7 +265,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out the overall statistics of the selected library
-    private static void viewLibraryStatisticsOption(Library selectedLibrary) {
+    private void viewLibraryStatisticsOption(Library selectedLibrary) {
         System.out.println("\n------------------------------------------------");
         System.out.print(selectedLibrary.getName());
         System.out.println(" Statistics:\n");
@@ -277,7 +279,7 @@ public class BookTrackerAppConsole {
     }
 
     // EFFECTS: Prints out information on all books in the selected library
-    private static void viewLibraryBooksOption(Library selectedLibrary) {
+    private void viewLibraryBooksOption(Library selectedLibrary) {
         int index = 1;
 
         System.out.println("\n------------------------------------------------");
@@ -302,7 +304,7 @@ public class BookTrackerAppConsole {
     // MODIFIES: selectedLibrary
     // EFFECTS: Prints out all books in the selected library, asks for a book name,
     // and removes that book
-    private static void removeBookOption(Library selectedLibrary, Scanner scanner) {
+    private void removeBookOption(Library selectedLibrary, Scanner scanner) {
         System.out.println("Books available:");
         for (Book book : selectedLibrary.getBookCollection()) {
             System.out.print("- ");
@@ -332,7 +334,7 @@ public class BookTrackerAppConsole {
     }
 
     // Prints out available options in the library and asks for input on an option
-    private static void listLibraryOptions(Library selectedLibrary, Scanner scanner) {
+    private void listLibraryOptions(Library selectedLibrary, Scanner scanner) {
         String option;
 
         do {
