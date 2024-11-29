@@ -9,19 +9,22 @@ import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.*;
 
 import model.LibraryApp;
+import model.Event;
+import model.EventLog;
 import model.Library;
 import persistence.Reader;
 import persistence.Writer;
 
 // Creates the GUI interface for the BookTrackerApp
-public class BookTrackerAppGUI extends JFrame implements ActionListener {
+public class BookTrackerAppGUI extends JFrame implements ActionListener, WindowListener {
     protected LibraryApp bta;
 
     private String filePath = "./data/bookTrackerAppData.json";
@@ -52,8 +55,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
 
         bta = new LibraryApp();
 
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // Set the program to exit when the close button is
-        // clicked
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE); // The window should run a custom method to print out the
+                                                      // log before closing
         this.setSize(850, 600); // Set window size
         this.setLocationRelativeTo(null);
 
@@ -69,6 +72,8 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         JPanel thirdColumnSection = createThirdColumnSection(columnPadding);
 
         setButtonFunctionality();
+
+        addWindowListener(this);
 
         // Add all items to the main GUI frame
         this.add(titleSection, BorderLayout.PAGE_START);
@@ -320,6 +325,7 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
         } else if ("open library".equals(e.getActionCommand())) {
             openLibrary();
         } else if ("exit".equals(e.getActionCommand())) {
+            windowClosing(null);
             dispose();
         }
     }
@@ -439,5 +445,40 @@ public class BookTrackerAppGUI extends JFrame implements ActionListener {
     // EFFECTS: Creates a window to show all books tracked
     private void viewAllBooks() {
         new TextWindow(bta.getLibraries());
+    }
+
+    // Taken from:
+    // https://docs.oracle.com/javase/tutorial/uiswing/events/windowlistener.html
+    @Override
+    public void windowClosing(WindowEvent e) {
+        // Taken from:
+        // https://github.students.cs.ubc.ca/CPSC210/AlarmSystem/blob/main/src/main/ca/ubc/cpsc210/alarm/ui/ScreenPrinter.java
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.toString());
+        }
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 }
