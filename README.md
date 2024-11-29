@@ -23,7 +23,6 @@ I think that my target audience would be mostly people who enjoy reading books a
 - As a user, I want to have the option to load my libraries and reading history from a file.
 
 # Instructions for End User
-
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" (adding libraries to the application) by:
     
     1. Run the application.
@@ -59,7 +58,6 @@ I think that my target audience would be mostly people who enjoy reading books a
     2. Click the "**Load Library**" button at the bottom of the screen.
 
 # Phase 4: Task 2
-
 ```txt
 Wed Nov 27 11:26:01 PST 2024
 Created a new library
@@ -80,3 +78,6 @@ Removed a library
 Wed Nov 27 11:26:54 PST 2024
 Removed a book from a library
 ```
+
+# Phase 4: Task 3
+If I had more time for this project, I would probably refactor `LibraryWindow` and `BookTrackerAppGUI` into a superclass that they inherit or implement instead. Looking at the code for both files, there's a lot of repeating variables that could be extracted out into it's own file which they both inherit and also repeating methods which they could implement instead. The variables such as the button colours and the implementations of `ActionListener` are very similar.
