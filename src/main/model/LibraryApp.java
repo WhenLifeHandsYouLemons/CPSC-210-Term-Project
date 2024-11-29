@@ -24,6 +24,8 @@ public class LibraryApp {
     // libraries
     public void addLibrary(String name) {
         libraries.add(new Library(name));
+
+        EventLog.getInstance().logEvent(new Event("Created a new library"));
     }
 
     // REQUIRES: A Library with the given name exists in libraries
@@ -40,6 +42,8 @@ public class LibraryApp {
 
             index++;
         }
+
+        EventLog.getInstance().logEvent(new Event("Removed a library"));
     }
 
     public List<Library> getLibraries() {

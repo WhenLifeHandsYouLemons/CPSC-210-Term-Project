@@ -29,6 +29,8 @@ public class Library {
     // EFFECTS: Adds the given Book book to the end of bookCollection
     public void addBookToHistory(Book book) {
         this.bookCollection.add(book);
+
+        EventLog.getInstance().logEvent(new Event("Added a book to a library"));
     }
 
     // REQUIRES: history.length() > 0
@@ -57,6 +59,8 @@ public class Library {
 
             index++;
         }
+
+        EventLog.getInstance().logEvent(new Event("Removed a book from a library"));
     }
 
     public String getName() {
