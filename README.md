@@ -58,6 +58,8 @@ I think that my target audience would be mostly people who enjoy reading books a
     2. Click the "**Load Library**" button at the bottom of the screen.
 
 # Phase 4: Task 2
+Sample event log output:
+
 ```txt
 Wed Nov 27 11:26:01 PST 2024
 Created a new library
@@ -80,4 +82,6 @@ Removed a book from a library
 ```
 
 # Phase 4: Task 3
+Reflection:
+
 If I had more time for this project, I would probably refactor `LibraryWindow` and `BookTrackerAppGUI` into a superclass that they inherit or implement instead. Looking at the code for both files, there's a lot of repeating variables that could be extracted out into it's own file which they both inherit and also repeating methods which they could implement instead. The variables such as the button colours and the implementations of `ActionListener` are very similar.
